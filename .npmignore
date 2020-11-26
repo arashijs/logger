@@ -1,0 +1,5 @@
+.*cache
+tsconfig*
+spec
+coverage
+.nyc_output

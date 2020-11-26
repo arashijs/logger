@@ -1,0 +1,38 @@
+{
+  "name": "@arashi/logger",
+  "version": "0.0.0-dev",
+  "description": "Logger",
+  "main": "./lib/api.js",
+  "dependencies": {
+    "@types/node": "12.19.7",
+    "winston": "3.3.3"
+  },
+  "devDependencies": {
+    "@breautek/jasmine-progress-reporter": "0.0.4",
+    "@totalpave/eslint-plugin": "4.0.0",
+    "@types/jasmine": "3.6.2",
+    "@typescript-eslint/eslint-plugin": "4.8.2",
+    "@typescript-eslint/parser": "4.8.2",
+    "eslint": "7.14.0",
+    "jasmine": "3.6.3",
+    "jasmine-spec-reporter": "6.0.0",
+    "nyc": "15.1.0",
+    "ts-node": "9.0.0",
+    "typescript": "4.1.2"
+  },
+  "scripts": {
+    "build": "npm run-script lint && tsc",
+    "lint": "node --max_old_space_size=6144 ./node_modules/eslint/bin/eslint.js --ext .ts '?(src|spec)/**/*.ts' --cache",
+    "test": "npm run-script lint && nyc --reporter=lcov --reporter=text node --max_old_space_size=6144 -r ts-node/register ./spec/support/jasmine.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arashijs/logger.git"
+  },
+  "author": "norman@nbsolutions.ca",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/arashijs/logger/issues"
+  },
+  "homepage": "https://github.com/arashijs/logger#readme"
+}
