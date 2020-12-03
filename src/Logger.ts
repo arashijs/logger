@@ -32,6 +32,8 @@ export class Logger extends EventEmitter {
     public constructor(name: string = '', logLevel: LogLevel = LogLevel.INFO) {
         super();
         
+        this._filters = this._getDefaultLogFilters();
+
         this._logger = Winston.createLogger({
             level: logLevel,
             format: Winston.format.combine(
