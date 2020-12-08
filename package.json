@@ -3,6 +3,10 @@
   "version": "0.0.0-dev",
   "description": "Logger",
   "main": "./lib/api.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@types/node": "12.19.8",
     "winston": "3.3.3"
