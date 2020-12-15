@@ -13,13 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// import {LogEvent} from './LogEvent';
-// import {ILogEvent} from './ILogEvent';
-// import * as utils from 'util';
-// import {getInstance} from './instance';
-// import { IConfig } from './IConfig';
-// import { Application } from './Application';
-// import {Writable} from 'stream';
+import * as utils from 'util';
 import * as Winston from 'winston';
 import { LogLevel } from './LogLevel';
 import {EventEmitter} from 'events';
@@ -116,7 +110,10 @@ export class Logger extends EventEmitter {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public log(level: LogLevel, message: any): void {
         if (this._shouldFilter(message)) {
-            this._logger.log(level, message);
+            this._logger.log(level, utils.inspect(message, {
+                depth: Infinity,
+                compact: true
+            }));
         }
     }
 
