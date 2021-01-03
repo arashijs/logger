@@ -56,6 +56,14 @@ export class Logger extends EventEmitter {
         });
     }
 
+    public setLogLevel(level: LogLevel): void {
+        this._logger.level = level;
+    }
+
+    public getLogLevel(): LogLevel {
+        return <LogLevel> this._logger.level;
+    }
+
     public addFilter(reg: RegExp): void {
         this._filters.push(reg);
     }
@@ -108,23 +116,47 @@ export class Logger extends EventEmitter {
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public log(level: LogLevel, message: any): void {
-        if (this._shouldFilter(message)) {
-            this._logger.log(level, utils.inspect(message, {
+    private _parseMessage(message: any): string {
+        if (typeof message === 'string') {
+            return message;
+        }
+        else {
+            return utils.inspect(message, {
                 depth: Infinity,
                 compact: true
-            }));
+            });
         }
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    public log(level: LogLevel, message: any): void {
+        if (this._shouldFilter(message)) {
+            this._logger.log(level, this._parseMessage(message));
+        }
+    }
+
+    /**
+     * Alias for `silly`
+     * @param message 
+     */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public trace(message: any): void {
+        this.silly(message);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    public silly(message: any): void {
         this.log(LogLevel.SILLY, message);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public debug(message: any): void {
         this.log(LogLevel.DEBUG, message);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    public verbose(message: any): void {
+        this.log(LogLevel.VERBOSE, message);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -157,9 +189,9 @@ export class Logger extends EventEmitter {
             args.push(this._getDeprecatedAlternativeMessage(alternative));
         }
         
-        args.push('\n\n');
+        args.push('\n');
         args.push(e.stack);
-        this.log(args, LogLevel.WARN);
+        this.log(LogLevel.WARN, args.join('\n'));
     }
 
     public deprecateParameterType(argumentLocation: number, deprecatedType: string, alternative?: string): void {
@@ -172,9 +204,9 @@ export class Logger extends EventEmitter {
             args.push(this._getDeprecatedParameterAlternativeMessage(alternative,  argumentLocation));
         }
         
-        args.push('\n\n');
+        args.push('\n');
         args.push(e.stack);
-        this.log(args, LogLevel.WARN);
+        this.log(LogLevel.WARN, args.join('\n'));
     }
     
     private _getDeprecatedMethodMessage(e: Error): string {
