@@ -18,26 +18,35 @@ import * as Winston from 'winston';
 import { LogLevel } from './LogLevel';
 import {EventEmitter} from 'events';
 import {LogEvent} from './LogEvent';
+import * as Path from 'path';
 
 const F_RESET: string = '\x1b[0m';
 const F_DIM: string = '\x1b[2m';
 const F_FG_BLUE: string = '\x1b[34m';
 const F_FG_CYAN: string = '\x1b[36m';
-// const F_FG_GREEN: string = '\x1b[32m';
 
 export class Logger extends EventEmitter {
     private _filters: Array<RegExp>;
     private _logger: Winston.Logger;
+    private _logLocation: string;
+    private _serviceName: string;
 
-    public constructor(serviceName: string = 'Generic', componentName: string = 'Component', logLevel: LogLevel = LogLevel.INFO) {
+    public constructor(serviceName: string = 'Generic', logLevel: LogLevel = LogLevel.INFO, logLocation?: string) {
         super();
+
+        if (!logLocation) {
+            logLocation = process.cwd();
+        }
+
+        this._logLocation = Path.resolve(logLocation);
         
         this._filters = this._getDefaultLogFilters();
+        this._serviceName = serviceName;
 
         let format: Winston.Logform.Format = Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
             // Typescript for some reason doesn't allow using symbols as indexes.
             const MESSAGE: any = Symbol.for('message');
-            info[MESSAGE] = `${F_DIM}${info.timestamp}${F_RESET} - [${F_FG_BLUE}${serviceName}${F_RESET}][${F_FG_CYAN}${componentName}${F_RESET}]: ${info.level}: ${info.message}`
+            info[MESSAGE] = `${F_DIM}${info.timestamp}${F_RESET} - [${F_FG_BLUE}${info.service}${F_RESET}][${F_FG_CYAN}${info.component}${F_RESET}]: ${info.level}: ${info.message}`
             return info;
         })();
 
@@ -62,21 +71,38 @@ export class Logger extends EventEmitter {
                 Winston.format.errors({ stack: true })
             ),
             defaultMeta: {
-                service: serviceName,
-                component: componentName
+                service: serviceName
             },
             transports: [
                 consoleTransport,
                 new Winston.transports.File({
-                    filename: `${serviceName}.json.log`,
+                    filename: Path.resolve(this._logLocation, `${serviceName}.json.log`),
                     level: logLevel,
                     format: Winston.format.combine(
                         Winston.format.json(),
-                        Winston.format.errors({ stack: true })
+                        Winston.format.errors({ stack: true }),
+                        Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
+                            const MESSAGE: any = Symbol.for('message');
+                            info[MESSAGE] = utils.inspect({
+                                level: info.level,
+                                message: info.message,
+                                timestamp: info.timestamp,
+                                service: info.service,
+                                component: info.component,
+                                meta: info.meta
+                            }, {
+                                depth: Infinity,
+                                colors: false,
+                                maxArrayLength: Infinity,
+                                showProxy: true,
+                                breakLength: Infinity
+                            });
+                            return info;
+                        })()
                     )
                 }),
                 new Winston.transports.File({
-                    filename: `${serviceName}.log`,
+                    filename: Path.resolve(this._logLocation, `${serviceName}.log`),
                     level: logLevel,
                     format: Winston.format.combine(
                         Winston.format.simple(),
@@ -85,8 +111,8 @@ export class Logger extends EventEmitter {
                     )
                 }),
                 new Winston.transports.File({
-                    filename: `${serviceName}.errors.log`,
-                    level: LogLevel.ERROR,
+                    filename: Path.resolve(this._logLocation, `${serviceName}.errors.log`),
+                    level: LogLevel.WARN,
                     format: Winston.format.combine(
                         Winston.format.simple(),
                         Winston.format.errors({ stack: true }),
@@ -170,9 +196,18 @@ export class Logger extends EventEmitter {
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public log(level: LogLevel, message: any): void {
+    public log(level: LogLevel, component: string, message: any, metadata?: Record<any, any>): void {
+
+        if (!metadata) {
+            metadata = {};
+        }
+
         if (this._shouldFilter(message)) {
-            this._logger.log(level, this._parseMessage(message));
+            this._logger.log(level, this._parseMessage(message), {
+                service: this._serviceName,
+                component: component,
+                meta: metadata
+            });
         }
     }
 
@@ -181,41 +216,41 @@ export class Logger extends EventEmitter {
      * @param message 
      */
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public trace(message: any): void {
-        this.silly(message);
+    public trace(component: string, message: any, metadata?: Record<any, any>): void {
+        this.silly(component, message, metadata);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public silly(message: any): void {
-        this.log(LogLevel.SILLY, message);
+    public silly(component: string, message: any, metadata?: Record<any, any>): void {
+        this.log(LogLevel.SILLY, component, message, metadata);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public debug(message: any): void {
-        this.log(LogLevel.DEBUG, message);
+    public debug(component: string, message: any, metadata?: Record<any, any>): void {
+        this.log(LogLevel.DEBUG, component, message, metadata);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public verbose(message: any): void {
-        this.log(LogLevel.VERBOSE, message);
+    public verbose(component: string, message: any, metadata?: Record<any, any>): void {
+        this.log(LogLevel.VERBOSE, component, message, metadata);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public info(message: any): void {
-        this.log(LogLevel.INFO, message);
+    public info(component: string, message: any, metadata?: Record<any, any>): void {
+        this.log(LogLevel.INFO, component, message, metadata);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public warn(message: any): void {
-        this.log(LogLevel.WARN, message);
+    public warn(component: string, message: any, metadata?: Record<any, any>): void {
+        this.log(LogLevel.WARN, component, message, metadata);
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    public error(message: any): void {
-        this.log(LogLevel.ERROR, message);
+    public error(component: string, message: any, metadata?: Record<any, any>): void {
+        this.log(LogLevel.ERROR, component, message, metadata);
     }
 
-    public deprecate(alternative?: string, methodOverride?: string): void {
+    public deprecate(component: string, alternative?: string, methodOverride?: string): void {
         let e: Error = new Error();
         let args: any = [];
         
@@ -232,10 +267,10 @@ export class Logger extends EventEmitter {
         
         args.push('\n');
         args.push(e.stack);
-        this.log(LogLevel.WARN, args.join('\n'));
+        this.log(LogLevel.WARN, component, args.join('\n'));
     }
 
-    public deprecateParameterType(argumentLocation: number, deprecatedType: string, alternative?: string): void {
+    public deprecateParameterType(component: string, argumentLocation: number, deprecatedType: string, alternative?: string): void {
         let e: Error = new Error();
         let args: any = [];
 
@@ -247,7 +282,7 @@ export class Logger extends EventEmitter {
         
         args.push('\n');
         args.push(e.stack);
-        this.log(LogLevel.WARN, args.join('\n'));
+        this.log(LogLevel.WARN, component, args.join('\n'));
     }
     
     private _getDeprecatedMethodMessage(e: Error): string {
@@ -278,9 +313,3 @@ export class Logger extends EventEmitter {
         return `Use ${alternative} at parameter ${argumentLocation} instead.`;
     }
 }
-
-
-let test: Logger = new Logger('Test Service', 'Test Component');
-test.info('test');
-test.error('bad bad error');
-test.error(new Error('Some real error'));

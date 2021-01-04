@@ -1,7 +1,6 @@
 
 import {Logger} from '../src/Logger';
 import { LogLevel } from '../src/LogLevel';
-// import {MockLogger} from './support/MockLogger';
 
 describe('Logger', () => {
     let logger: Logger = null;
@@ -59,112 +58,89 @@ describe('Logger', () => {
     it('Can log silly messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger)._logger, 'log');
         logger.setLogLevel(LogLevel.SILLY);
-        logger.silly('This is a trace message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.SILLY, 'This is a trace message');
+        logger.silly('component', 'This is a trace message');
+        expect(spy).toHaveBeenCalledWith(LogLevel.SILLY, 'This is a trace message', {
+            service: 'test',
+            component: 'component',
+            meta: {}
+        });
     });
 
     it('Can log debug messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger)._logger, 'log');
         logger.setLogLevel(LogLevel.DEBUG);
-        logger.debug('This is a debug message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.DEBUG, 'This is a debug message');
+        logger.debug('component', 'This is a debug message');
+        expect(spy).toHaveBeenCalledWith(LogLevel.DEBUG, 'This is a debug message', {
+            service: 'test',
+            component: 'component',
+            meta: {}
+        });
     });
 
     it('Can log verbose messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger)._logger, 'log');
         logger.setLogLevel(LogLevel.VERBOSE);
-        logger.verbose('This is a verbose message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.VERBOSE, 'This is a verbose message');
+        logger.verbose('component', 'This is a verbose message');
+        expect(spy).toHaveBeenCalledWith(LogLevel.VERBOSE, 'This is a verbose message', {
+            service: 'test',
+            component: 'component',
+            meta: {}
+        });
     });
 
     it('Can log info messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger)._logger, 'log');
         logger.setLogLevel(LogLevel.INFO);
-        logger.info('This is a info message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.INFO, 'This is a info message');
+        logger.info('component', 'This is a info message');
+        expect(spy).toHaveBeenCalledWith(LogLevel.INFO, 'This is a info message', {
+            service: 'test',
+            component: 'component',
+            meta: {}
+        });
     });
 
     it('Can log warning messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger)._logger, 'log');
         logger.setLogLevel(LogLevel.WARN);
-        logger.warn('This is a warning message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.WARN, 'This is a warning message');
+        logger.warn('component', 'This is a warning message');
+        expect(spy).toHaveBeenCalledWith(LogLevel.WARN, 'This is a warning message', {
+            service: 'test',
+            component: 'component',
+            meta: {}
+        });
     });
 
     it('Can log error messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger)._logger, 'log');
         logger.setLogLevel(LogLevel.ERROR);
-        logger.error('This is a error message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.ERROR, 'This is a error message');
+        logger.error('component', 'This is a error message');
+        expect(spy).toHaveBeenCalledWith(LogLevel.ERROR, 'This is a error message', {
+            service: 'test',
+            component: 'component',
+            meta: {}
+        });
     });
-
-    // it('it can load log_filters from config', (done) => {
-    //     let a: ConfigTestApp = new ConfigTestApp(JSON.stringify({
-    //         binding_ip: null,
-    //         port: null,
-    //         authentication_header: 'X-BT-AUTH',
-    //         log_level: 'error | fatal',
-    //         backend_authentication_header: 'X-BT-BACKEND-AUTH',
-    //         backend_authentication_secret: null,
-    //         log_filters: [ '/test1/g', '/test2/g' ]
-    //     }));
-
-    //     logger.on('ready', () => {
-    //         let logger: Logger = logger.getLogger();
-    //         let filters: Array<RegExp> = logger.getFilters();
-    //         expect(filters[0].toString()).toBe('/test1/g');
-    //         expect(filters[1].toString()).toBe('/test2/g');
-    //         done();
-    //     });
-    // });
-
-    // it('FormatText handles logging unknown severity', () => {
-    //     let mock: MockLogger = new MockLogger();
-    //     expect(mock.formatString([ 'test', '123' ], 123123).indexOf('test 123')).toBeGreaterThan(-1);
-    // });
-
-    // it('FormatText handles logging objects', () => {
-    //     let mock: MockLogger = new MockLogger();
-    //     expect(mock.formatString([ {a: true, b: 123, c: 'test'} ], LogSeverity.INFO).indexOf(`{ a: true, b: 123, c: 'test' }`)).toBeGreaterThan(-1);
-    // });
-
-    // it('FormatText handles logging errors', () => {
-    //     let mock: MockLogger = new MockLogger();
-    //     expect(mock.formatString([ new Error('test error') ], LogSeverity.INFO).indexOf(`test error`)).toBeGreaterThan(-1);
-    // });
-
-    // it('can setLogStream', () => {
-    //     let mock: MockLogger = new MockLogger();
-    //     mock.setLogStream(process.stdout);
-    //     expect(mock.getLogStream()).toBe(process.stdout);
-    // });
-
-    // it('can setErrorStream', () => {
-    //     let mock: MockLogger = new MockLogger();
-    //     mock.setErrorStream(process.stdout);
-    //     expect(mock.getErrorStream()).toBe(process.stdout);
-    // });
 
     describe('Deprecation', () => {
         class Deprecation {
             public deprecationWithNoAlternative(): void {
-                logger.deprecate();
+                logger.deprecate('component');
             }
 
             public deprecationWithAlternative(): void {
-                logger.deprecate('properMethod');
+                logger.deprecate('component', 'properMethod');
             }
         }
 
         class DeprecatedClass {
             constructor() {
-                logger.deprecate();
+                logger.deprecate('component');
             }
         }
 
         class DeprecatedClassWithAlternative {
             constructor() {
-                logger.deprecate('NonDeprecatedClass');
+                logger.deprecate('component', 'NonDeprecatedClass');
             }
         }
 
