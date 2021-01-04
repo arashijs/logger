@@ -19,14 +19,39 @@ import { LogLevel } from './LogLevel';
 import {EventEmitter} from 'events';
 import {LogEvent} from './LogEvent';
 
+const F_RESET: string = '\x1b[0m';
+const F_DIM: string = '\x1b[2m';
+const F_FG_BLUE: string = '\x1b[34m';
+const F_FG_CYAN: string = '\x1b[36m';
+// const F_FG_GREEN: string = '\x1b[32m';
+
 export class Logger extends EventEmitter {
     private _filters: Array<RegExp>;
     private _logger: Winston.Logger;
 
-    public constructor(name: string = '', logLevel: LogLevel = LogLevel.INFO) {
+    public constructor(serviceName: string = 'Generic', componentName: string = 'Component', logLevel: LogLevel = LogLevel.INFO) {
         super();
         
         this._filters = this._getDefaultLogFilters();
+
+        let format: Winston.Logform.Format = Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
+            // Typescript for some reason doesn't allow using symbols as indexes.
+            const MESSAGE: any = Symbol.for('message');
+            info[MESSAGE] = `${F_DIM}${info.timestamp}${F_RESET} - [${F_FG_BLUE}${serviceName}${F_RESET}][${F_FG_CYAN}${componentName}${F_RESET}]: ${info.level}: ${info.message}`
+            return info;
+        })();
+
+        let consoleTransport: Winston.transports.ConsoleTransportInstance = new Winston.transports.Console({
+            format: Winston.format.combine(
+                Winston.format.colorize(),
+                format,
+                Winston.format.errors({ stack: true })
+            )
+        });
+
+        consoleTransport.on('logged', (log: Winston.LogEntry) => {
+            this.emit(LogEvent.LOG, log.message);
+        });
 
         this._logger = Winston.createLogger({
             level: logLevel,
@@ -34,25 +59,41 @@ export class Logger extends EventEmitter {
                 Winston.format.timestamp({
                     format: 'YYYY-MM-DD HH:mm:ss'
                 }),
-                Winston.format.errors({ stack: true }),
-                Winston.format.splat(),
-                Winston.format.json()
+                Winston.format.errors({ stack: true })
             ),
-            defaultMeta: { service: name },
+            defaultMeta: {
+                service: serviceName,
+                component: componentName
+            },
             transports: [
-                new Winston.transports.Console({
+                consoleTransport,
+                new Winston.transports.File({
+                    filename: `${serviceName}.json.log`,
+                    level: logLevel,
                     format: Winston.format.combine(
-                        Winston.format.colorize(),
-                        Winston.format.simple()
+                        Winston.format.json(),
+                        Winston.format.errors({ stack: true })
+                    )
+                }),
+                new Winston.transports.File({
+                    filename: `${serviceName}.log`,
+                    level: logLevel,
+                    format: Winston.format.combine(
+                        Winston.format.simple(),
+                        Winston.format.errors({ stack: true }),
+                        format
+                    )
+                }),
+                new Winston.transports.File({
+                    filename: `${serviceName}.errors.log`,
+                    level: LogLevel.ERROR,
+                    format: Winston.format.combine(
+                        Winston.format.simple(),
+                        Winston.format.errors({ stack: true }),
+                        format
                     )
                 })
             ]
-        });
-
-        this._logger.stream({
-            start: -1
-        }).on('log', (log: any) => {
-            this.emit(LogEvent.LOG, log);
         });
     }
 
@@ -237,3 +278,9 @@ export class Logger extends EventEmitter {
         return `Use ${alternative} at parameter ${argumentLocation} instead.`;
     }
 }
+
+
+let test: Logger = new Logger('Test Service', 'Test Component');
+test.info('test');
+test.error('bad bad error');
+test.error(new Error('Some real error'));
