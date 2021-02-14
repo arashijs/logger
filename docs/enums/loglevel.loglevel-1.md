@@ -22,7 +22,7 @@
 
 • **DEBUG**: = "debug"
 
-Defined in: [src/LogLevel.ts:8](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L8)
+Defined in: [src/LogLevel.ts:8](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L8)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **ERROR**: = "error"
 
-Defined in: [src/LogLevel.ts:3](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L3)
+Defined in: [src/LogLevel.ts:3](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L3)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **HTTP**: = "http"
 
-Defined in: [src/LogLevel.ts:6](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L6)
+Defined in: [src/LogLevel.ts:6](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L6)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **INFO**: = "info"
 
-Defined in: [src/LogLevel.ts:5](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L5)
+Defined in: [src/LogLevel.ts:5](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L5)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **SILLY**: = "silly"
 
-Defined in: [src/LogLevel.ts:9](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L9)
+Defined in: [src/LogLevel.ts:9](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L9)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **VERBOSE**: = "verbose"
 
-Defined in: [src/LogLevel.ts:7](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L7)
+Defined in: [src/LogLevel.ts:7](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L7)
 
 ___
 
@@ -70,4 +70,4 @@ ___
 
 • **WARN**: = "warn"
 
-Defined in: [src/LogLevel.ts:4](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogLevel.ts#L4)
+Defined in: [src/LogLevel.ts:4](https://github.com/arashijs/logger/blob/6f4dab1/src/LogLevel.ts#L4)

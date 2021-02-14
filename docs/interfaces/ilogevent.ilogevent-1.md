@@ -21,7 +21,7 @@
 
 • **message**: *any*
 
-Defined in: [src/ILogEvent.ts:20](https://github.com/arashijs/logger/blob/c2ee6c8/src/ILogEvent.ts#L20)
+Defined in: [src/ILogEvent.ts:20](https://github.com/arashijs/logger/blob/6f4dab1/src/ILogEvent.ts#L20)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 • **severity**: [*LogLevel*](../enums/loglevel.loglevel-1.md)
 
-Defined in: [src/ILogEvent.ts:19](https://github.com/arashijs/logger/blob/c2ee6c8/src/ILogEvent.ts#L19)
+Defined in: [src/ILogEvent.ts:19](https://github.com/arashijs/logger/blob/6f4dab1/src/ILogEvent.ts#L19)

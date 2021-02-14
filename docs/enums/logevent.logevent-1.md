@@ -16,4 +16,4 @@
 
 • **LOG**: = "log"
 
-Defined in: [src/LogEvent.ts:17](https://github.com/arashijs/logger/blob/c2ee6c8/src/LogEvent.ts#L17)
+Defined in: [src/LogEvent.ts:17](https://github.com/arashijs/logger/blob/6f4dab1/src/LogEvent.ts#L17)

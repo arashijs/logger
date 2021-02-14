@@ -79,7 +79,7 @@ Name | Type | Default value |
 
 **Returns:** [*Logger*](logger.logger-1.md)
 
-Defined in: [src/Logger.ts:32](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L32)
+Defined in: [src/Logger.ts:32](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L32)
 
 ## Properties
 
@@ -137,7 +137,7 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [src/Logger.ts:161](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L161)
+Defined in: [src/Logger.ts:161](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L161)
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 **Returns:** *RegExp*[]
 
-Defined in: [src/Logger.ts:157](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L157)
+Defined in: [src/Logger.ts:157](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L157)
 
 ___
 
@@ -163,7 +163,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [src/Logger.ts:166](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L166)
+Defined in: [src/Logger.ts:166](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L166)
 
 ___
 
@@ -179,7 +179,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:133](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L133)
+Defined in: [src/Logger.ts:133](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L133)
 
 ___
 
@@ -214,7 +214,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:228](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L228)
+Defined in: [src/Logger.ts:228](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L228)
 
 ___
 
@@ -232,7 +232,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:252](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L252)
+Defined in: [src/Logger.ts:252](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L252)
 
 ___
 
@@ -251,7 +251,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:272](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L272)
+Defined in: [src/Logger.ts:272](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L272)
 
 ___
 
@@ -286,7 +286,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:248](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L248)
+Defined in: [src/Logger.ts:248](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L248)
 
 ___
 
@@ -306,7 +306,7 @@ ___
 
 **Returns:** *RegExp*[]
 
-Defined in: [src/Logger.ts:153](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L153)
+Defined in: [src/Logger.ts:153](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L153)
 
 ___
 
@@ -316,7 +316,7 @@ ___
 
 **Returns:** [*LogLevel*](../enums/loglevel.loglevel-1.md)
 
-Defined in: [src/Logger.ts:129](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L129)
+Defined in: [src/Logger.ts:129](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L129)
 
 ___
 
@@ -344,7 +344,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:238](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L238)
+Defined in: [src/Logger.ts:238](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L238)
 
 ___
 
@@ -395,7 +395,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:198](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L198)
+Defined in: [src/Logger.ts:198](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L198)
 
 ___
 
@@ -528,7 +528,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:137](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L137)
+Defined in: [src/Logger.ts:137](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L137)
 
 ___
 
@@ -561,7 +561,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:144](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L144)
+Defined in: [src/Logger.ts:144](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L144)
 
 ___
 
@@ -577,7 +577,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:125](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L125)
+Defined in: [src/Logger.ts:125](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L125)
 
 ___
 
@@ -611,7 +611,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:223](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L223)
+Defined in: [src/Logger.ts:223](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L223)
 
 ___
 
@@ -631,7 +631,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:218](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L218)
+Defined in: [src/Logger.ts:218](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L218)
 
 ___
 
@@ -649,7 +649,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:233](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L233)
+Defined in: [src/Logger.ts:233](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L233)
 
 ___
 
@@ -667,7 +667,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [src/Logger.ts:243](https://github.com/arashijs/logger/blob/c2ee6c8/src/Logger.ts#L243)
+Defined in: [src/Logger.ts:243](https://github.com/arashijs/logger/blob/6f4dab1/src/Logger.ts#L243)
 
 ___
 
