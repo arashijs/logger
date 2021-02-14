@@ -34,7 +34,7 @@
     "url": "git+https://github.com/arashijs/logger.git"
   },
   "author": "norman@nbsolutions.ca",
-  "license": "GPL-3.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/arashijs/logger/issues"
   },
