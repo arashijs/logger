@@ -34,11 +34,7 @@ export class Logger extends EventEmitter {
     public constructor(serviceName: string = 'Generic', logLevel: LogLevel = LogLevel.INFO, logLocation?: string) {
         super();
 
-        if (!logLocation) {
-            logLocation = process.cwd();
-        }
-
-        this._logLocation = Path.resolve(logLocation);
+        this._logLocation = logLocation ? Path.resolve(logLocation) : null;
         
         this._filters = this._getDefaultLogFilters();
         this._serviceName = serviceName;
@@ -62,6 +58,55 @@ export class Logger extends EventEmitter {
             this.emit(LogEvent.LOG, log.message);
         });
 
+        let transports: Array<Winston.transport> = [ consoleTransport ];
+
+        if (this._logLocation) {
+            transports.push(new Winston.transports.File({
+                filename: Path.resolve(this._logLocation, `${serviceName}.json.log`),
+                level: logLevel,
+                format: Winston.format.combine(
+                    Winston.format.json(),
+                    Winston.format.errors({ stack: true }),
+                    Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
+                        const MESSAGE: any = Symbol.for('message');
+                        info[MESSAGE] = utils.inspect({
+                            level: info.level,
+                            message: info.message,
+                            timestamp: info.timestamp,
+                            service: info.service,
+                            component: info.component,
+                            meta: info.meta
+                        }, {
+                            depth: Infinity,
+                            colors: false,
+                            maxArrayLength: Infinity,
+                            showProxy: true,
+                            breakLength: Infinity
+                        });
+                        return info;
+                    })()
+                )
+            }));
+            transports.push(new Winston.transports.File({
+                filename: Path.resolve(this._logLocation, `${serviceName}.log`),
+                level: logLevel,
+                format: Winston.format.combine(
+                    Winston.format.simple(),
+                    Winston.format.errors({ stack: true }),
+                    format
+                )
+            }));
+            transports.push(new Winston.transports.File({
+                filename: Path.resolve(this._logLocation, `${serviceName}.errors.log`),
+                level: LogLevel.WARN,
+                format: Winston.format.combine(
+                    Winston.format.simple(),
+                    Winston.format.errors({ stack: true }),
+                    format
+                )
+            }));
+        }
+
         this._logger = Winston.createLogger({
             level: logLevel,
             format: Winston.format.combine(
@@ -73,53 +118,7 @@ export class Logger extends EventEmitter {
             defaultMeta: {
                 service: serviceName
             },
-            transports: [
-                consoleTransport,
-                new Winston.transports.File({
-                    filename: Path.resolve(this._logLocation, `${serviceName}.json.log`),
-                    level: logLevel,
-                    format: Winston.format.combine(
-                        Winston.format.json(),
-                        Winston.format.errors({ stack: true }),
-                        Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
-                            const MESSAGE: any = Symbol.for('message');
-                            info[MESSAGE] = utils.inspect({
-                                level: info.level,
-                                message: info.message,
-                                timestamp: info.timestamp,
-                                service: info.service,
-                                component: info.component,
-                                meta: info.meta
-                            }, {
-                                depth: Infinity,
-                                colors: false,
-                                maxArrayLength: Infinity,
-                                showProxy: true,
-                                breakLength: Infinity
-                            });
-                            return info;
-                        })()
-                    )
-                }),
-                new Winston.transports.File({
-                    filename: Path.resolve(this._logLocation, `${serviceName}.log`),
-                    level: logLevel,
-                    format: Winston.format.combine(
-                        Winston.format.simple(),
-                        Winston.format.errors({ stack: true }),
-                        format
-                    )
-                }),
-                new Winston.transports.File({
-                    filename: Path.resolve(this._logLocation, `${serviceName}.errors.log`),
-                    level: LogLevel.WARN,
-                    format: Winston.format.combine(
-                        Winston.format.simple(),
-                        Winston.format.errors({ stack: true }),
-                        format
-                    )
-                })
-            ]
+            transports: transports
         });
     }
 
