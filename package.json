@@ -33,6 +33,7 @@
     "changelog": "auto-changelog --output CHANGELOG.md -p --release-summary --ignore-commit-pattern chore",
     "preversion": "npm run clean",
     "version": "npm run-script build && npm run-script build-docs && npm run changelog && git add CHANGELOG.md docs && git commit -m 'chore: changelog'",
+    "clean": "rm -r ./lib && rm -r ./docs",
     "postversion": "git push && git push --tags",
     "build-docs": "typedoc --excludePrivate --excludeNotExported --mode file -readme ./README.md --out ./docs ./src"
   },
