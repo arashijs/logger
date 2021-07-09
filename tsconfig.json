@@ -16,6 +16,7 @@
     },
     "exclude": [
         "./spec",
-        "./lib"
+        "./lib",
+        "jest.config.ts"
     ]
 }
