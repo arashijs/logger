@@ -11,20 +11,20 @@
     "winston": "3.3.3"
   },
   "devDependencies": {
-    "@totalpave/eslint-plugin": "4.1.0",
-    "@types/jest": "26.0.24",
-    "@types/node": "16.3.0",
-    "@typescript-eslint/eslint-plugin": "4.28.2",
-    "@typescript-eslint/parser": "4.28.2",
+    "@totalpave/eslint-plugin": "5.0.0",
+    "@types/jest": "27.0.1",
+    "@types/node": "16.6.1",
+    "@typescript-eslint/eslint-plugin": "4.29.2",
+    "@typescript-eslint/parser": "4.29.2",
     "auto-changelog": "2.3.0",
-    "eslint": "7.30.0",
+    "eslint": "7.32.0",
     "jest": "27.0.6",
     "nyc": "15.1.0",
-    "ts-jest": "27.0.3",
-    "ts-node": "10.0.0",
-    "typedoc": "0.21.2",
-    "typedoc-plugin-markdown": "3.10.2",
-    "typescript": "4.2.4"
+    "ts-jest": "27.0.5",
+    "ts-node": "10.2.0",
+    "typedoc": "0.21.5",
+    "typedoc-plugin-markdown": "3.10.4",
+    "typescript": "4.3.5"
   },
   "scripts": {
     "lint": "eslint --ext .ts,.tsx '?(src|spec)/**/*.?(ts|tsx)' --cache",
