@@ -26,10 +26,10 @@ const F_FG_BLUE: string = '\x1b[34m';
 const F_FG_CYAN: string = '\x1b[36m';
 
 export class Logger extends EventEmitter {
-    private _filters: Array<RegExp>;
-    private _logger: Winston.Logger;
-    private _logLocation: string;
-    private _serviceName: string;
+    private $filters: Array<RegExp>;
+    private $logger: Winston.Logger;
+    private $logLocation: string;
+    private $serviceName: string;
 
     public constructor(serviceName: string = 'Generic', logLevel: LogLevel = LogLevel.INFO, logLocation?: string) {
         super();
@@ -38,10 +38,10 @@ export class Logger extends EventEmitter {
             logLocation = process.cwd();
         }
 
-        this._logLocation = Path.resolve(logLocation);
+        this.$logLocation = Path.resolve(logLocation);
         
-        this._filters = this._getDefaultLogFilters();
-        this._serviceName = serviceName;
+        this.$filters = this._getDefaultLogFilters();
+        this.$serviceName = serviceName;
 
         let format: Winston.Logform.Format = Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
             // Typescript for some reason doesn't allow using symbols as indexes.
@@ -62,7 +62,7 @@ export class Logger extends EventEmitter {
             this.emit(LogEvent.LOG, log.message);
         });
 
-        this._logger = Winston.createLogger({
+        this.$logger = Winston.createLogger({
             level: logLevel,
             format: Winston.format.combine(
                 Winston.format.timestamp({
@@ -76,7 +76,7 @@ export class Logger extends EventEmitter {
             transports: [
                 consoleTransport,
                 new Winston.transports.File({
-                    filename: Path.resolve(this._logLocation, `${serviceName}.json.log`),
+                    filename: Path.resolve(this.$logLocation, `${serviceName}.json.log`),
                     level: logLevel,
                     format: Winston.format.combine(
                         Winston.format.json(),
@@ -102,7 +102,7 @@ export class Logger extends EventEmitter {
                     )
                 }),
                 new Winston.transports.File({
-                    filename: Path.resolve(this._logLocation, `${serviceName}.log`),
+                    filename: Path.resolve(this.$logLocation, `${serviceName}.log`),
                     level: logLevel,
                     format: Winston.format.combine(
                         Winston.format.simple(),
@@ -111,7 +111,7 @@ export class Logger extends EventEmitter {
                     )
                 }),
                 new Winston.transports.File({
-                    filename: Path.resolve(this._logLocation, `${serviceName}.errors.log`),
+                    filename: Path.resolve(this.$logLocation, `${serviceName}.errors.log`),
                     level: LogLevel.WARN,
                     format: Winston.format.combine(
                         Winston.format.simple(),
@@ -124,35 +124,35 @@ export class Logger extends EventEmitter {
     }
 
     public setLogLevel(level: LogLevel): void {
-        this._logger.level = level;
+        this.$logger.level = level;
     }
 
     public getLogLevel(): LogLevel {
-        return <LogLevel> this._logger.level;
+        return <LogLevel> this.$logger.level;
     }
 
     public addFilter(reg: RegExp): void {
-        this._filters.push(reg);
+        this.$filters.push(reg);
     }
 
     public removeFilter(reg: RegExp): void {
-        let index: number = this._filters.indexOf(reg);
+        let index: number = this.$filters.indexOf(reg);
         if (index > -1) {
-            this._filters.splice(index, 1);
+            this.$filters.splice(index, 1);
         }
     }
 
     public setFilters(filters: Array<RegExp>): void {
         if (filters) {
-            this._filters  = filters.slice();
+            this.$filters  = filters.slice();
         }
         else {
-            this._filters = [];
+            this.$filters = [];
         }
     }
 
     public getFilters(): Array<RegExp> {
-        return this._filters.slice();
+        return this.$filters.slice();
     }
 
     protected _getDefaultLogFilters(): Array<RegExp> {
@@ -172,8 +172,8 @@ export class Logger extends EventEmitter {
             message = message.toString();
         }
 
-        for (let i: number = 0; i < this._filters.length; i++) {
-            let filter: RegExp = this._filters[i];
+        for (let i: number = 0; i < this.$filters.length; i++) {
+            let filter: RegExp = this.$filters[i];
             if (filter.test(message)) {
                 return false;
             }
@@ -183,7 +183,7 @@ export class Logger extends EventEmitter {
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    private _parseMessage(message: any): string {
+    private $parseMessage(message: any): string {
         if (typeof message === 'string') {
             return message;
         }
@@ -203,8 +203,8 @@ export class Logger extends EventEmitter {
         }
 
         if (this._shouldFilter(message)) {
-            this._logger.log(level, this._parseMessage(message), {
-                service: this._serviceName,
+            this.$logger.log(level, this.$parseMessage(message), {
+                service: this.$serviceName,
                 component: component,
                 meta: metadata
             });
@@ -255,14 +255,14 @@ export class Logger extends EventEmitter {
         let args: any = [];
         
         if (!methodOverride) {
-            args.push(this._getDeprecatedMethodMessage(e));
+            args.push(this.$getDeprecatedMethodMessage(e));
         }
         else {
             args.push(methodOverride);
         }
 
         if (alternative) {
-            args.push(this._getDeprecatedAlternativeMessage(alternative));
+            args.push(this.$getDeprecatedAlternativeMessage(alternative));
         }
         
         args.push('\n');
@@ -274,10 +274,10 @@ export class Logger extends EventEmitter {
         let e: Error = new Error();
         let args: any = [];
 
-        args.push(this._getDeprecatedParameterMethodMessage(e, argumentLocation, deprecatedType));
+        args.push(this.$getDeprecatedParameterMethodMessage(e, argumentLocation, deprecatedType));
 
         if (alternative) {
-            args.push(this._getDeprecatedParameterAlternativeMessage(alternative,  argumentLocation));
+            args.push(this.$getDeprecatedParameterAlternativeMessage(alternative,  argumentLocation));
         }
         
         args.push('\n');
@@ -285,7 +285,7 @@ export class Logger extends EventEmitter {
         this.log(LogLevel.WARN, component, args.join('\n'));
     }
     
-    private _getDeprecatedMethodMessage(e: Error): string {
+    private $getDeprecatedMethodMessage(e: Error): string {
         let stack = e.stack.split('\n')[2].replace(/^\s+at\s+(.+?)\s.+/g, '$1');
         let obj: string = 'Method';
         if (stack === "new") {
@@ -295,11 +295,11 @@ export class Logger extends EventEmitter {
         return `${obj} ${stack} is deprecated.`
     }
 
-    private _getDeprecatedAlternativeMessage(alternative: string): string {
+    private $getDeprecatedAlternativeMessage(alternative: string): string {
         return `Use ${alternative} instead.`;
     }
 
-    private _getDeprecatedParameterMethodMessage(e: Error, argumentLocation: number, parameter: string): string {
+    private $getDeprecatedParameterMethodMessage(e: Error, argumentLocation: number, parameter: string): string {
         let stack = e.stack.split('\n')[2].replace(/^\s+at\s+(.+?)\s.+/g, '$1');
         let obj: string = 'Method';
         if (stack === "new") {
@@ -309,7 +309,7 @@ export class Logger extends EventEmitter {
         return `${obj} ${stack} ${parameter} at parameter ${argumentLocation} is deprecated.`
     }
 
-    private _getDeprecatedParameterAlternativeMessage(alternative: string, argumentLocation: number): string {
+    private $getDeprecatedParameterAlternativeMessage(alternative: string, argumentLocation: number): string {
         return `Use ${alternative} at parameter ${argumentLocation} instead.`;
     }
 }

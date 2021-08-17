@@ -1,6 +1,6 @@
 {
   "name": "@arashi/logger",
-  "version": "0.0.0-dev.2",
+  "version": "1.0.0-dev",
   "description": "Logger",
   "main": "./lib/api.js",
   "publishConfig": {
@@ -8,21 +8,21 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@types/node": "12.19.8",
+    "@types/node": "16.6.1",
     "winston": "3.3.3"
   },
   "devDependencies": {
     "@breautek/jasmine-progress-reporter": "0.0.4",
-    "@totalpave/eslint-plugin": "4.0.0",
-    "@types/jasmine": "3.6.2",
-    "@typescript-eslint/eslint-plugin": "4.9.1",
-    "@typescript-eslint/parser": "4.9.1",
-    "eslint": "7.15.0",
-    "jasmine": "3.6.3",
-    "jasmine-spec-reporter": "6.0.0",
+    "@totalpave/eslint-plugin": "5.0.0",
+    "@types/jasmine": "3.8.2",
+    "@typescript-eslint/eslint-plugin": "4.29.2",
+    "@typescript-eslint/parser": "4.29.2",
+    "eslint": "7.32.0",
+    "jasmine": "3.8.0",
+    "jasmine-spec-reporter": "7.0.0",
     "nyc": "15.1.0",
-    "ts-node": "9.1.1",
-    "typescript": "4.1.2"
+    "ts-node": "10.2.0",
+    "typescript": "4.3.5"
   },
   "scripts": {
     "build": "npm run-script lint && tsc",
