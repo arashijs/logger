@@ -1,4 +1,4 @@
-[@arashi/logger - v2.0.0](../README.md) / [Exports](../modules.md) / [Logger](../modules/Logger.md) / Logger
+[@arashi/logger - v2.0.1](../README.md) / [Exports](../modules.md) / [Logger](../modules/Logger.md) / Logger
 
 # Class: Logger
 
@@ -84,7 +84,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-[src/Logger.ts:34](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L34)
+[src/Logger.ts:34](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L34)
 
 ## Properties
 
@@ -170,7 +170,7 @@ node_modules/@types/node/events.d.ts:93
 
 #### Defined in
 
-[src/Logger.ts:161](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L161)
+[src/Logger.ts:161](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L161)
 
 ___
 
@@ -184,7 +184,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:157](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L157)
+[src/Logger.ts:157](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L157)
 
 ___
 
@@ -204,7 +204,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:166](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L166)
+[src/Logger.ts:166](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L166)
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:133](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L133)
+[src/Logger.ts:133](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L133)
 
 ___
 
@@ -275,7 +275,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:228](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L228)
+[src/Logger.ts:228](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L228)
 
 ___
 
@@ -297,7 +297,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:252](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L252)
+[src/Logger.ts:252](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L252)
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:272](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L272)
+[src/Logger.ts:272](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L272)
 
 ___
 
@@ -407,7 +407,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:248](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L248)
+[src/Logger.ts:248](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L248)
 
 ___
 
@@ -457,7 +457,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:153](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L153)
+[src/Logger.ts:153](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L153)
 
 ___
 
@@ -471,7 +471,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:129](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L129)
+[src/Logger.ts:129](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L129)
 
 ___
 
@@ -516,7 +516,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:238](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L238)
+[src/Logger.ts:238](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L238)
 
 ___
 
@@ -603,7 +603,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:198](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L198)
+[src/Logger.ts:198](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L198)
 
 ___
 
@@ -921,7 +921,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:137](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L137)
+[src/Logger.ts:137](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L137)
 
 ___
 
@@ -1045,7 +1045,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:144](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L144)
+[src/Logger.ts:144](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L144)
 
 ___
 
@@ -1065,7 +1065,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:125](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L125)
+[src/Logger.ts:125](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L125)
 
 ___
 
@@ -1120,7 +1120,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:223](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L223)
+[src/Logger.ts:223](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L223)
 
 ___
 
@@ -1144,7 +1144,7 @@ Alias for `silly`
 
 #### Defined in
 
-[src/Logger.ts:218](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L218)
+[src/Logger.ts:218](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L218)
 
 ___
 
@@ -1166,7 +1166,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:233](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L233)
+[src/Logger.ts:233](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L233)
 
 ___
 
@@ -1188,7 +1188,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:243](https://github.com/arashijs/logger/blob/667bffd/src/Logger.ts#L243)
+[src/Logger.ts:243](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L243)
 
 ___
 

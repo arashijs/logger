@@ -1,4 +1,4 @@
-[@arashi/logger - v2.0.0](../README.md) / [Exports](../modules.md) / [ILogEvent](../modules/ILogEvent.md) / ILogEvent
+[@arashi/logger - v2.0.1](../README.md) / [Exports](../modules.md) / [ILogEvent](../modules/ILogEvent.md) / ILogEvent
 
 # Interface: ILogEvent
 
@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[src/ILogEvent.ts:20](https://github.com/arashijs/logger/blob/667bffd/src/ILogEvent.ts#L20)
+[src/ILogEvent.ts:20](https://github.com/arashijs/logger/blob/ea93ee1/src/ILogEvent.ts#L20)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[src/ILogEvent.ts:19](https://github.com/arashijs/logger/blob/667bffd/src/ILogEvent.ts#L19)
+[src/ILogEvent.ts:19](https://github.com/arashijs/logger/blob/ea93ee1/src/ILogEvent.ts#L19)

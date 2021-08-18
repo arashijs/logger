@@ -1,6 +1,6 @@
-[@arashi/logger - v2.0.0](README.md) / Exports
+[@arashi/logger - v2.0.1](README.md) / Exports
 
-# @arashi/logger - v2.0.0
+# @arashi/logger - v2.0.1
 
 ## Table of contents
 
