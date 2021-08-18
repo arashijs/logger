@@ -1,13 +1,13 @@
-[@arashi/logger](README.md) / Exports
+[@arashi/logger - v2.0.0](README.md) / Exports
 
-# @arashi/logger
+# @arashi/logger - v2.0.0
 
 ## Table of contents
 
 ### Modules
 
-- [ILogEvent](modules/ilogevent.md)
-- [LogEvent](modules/logevent.md)
-- [LogLevel](modules/loglevel.md)
-- [Logger](modules/logger.md)
+- [ILogEvent](modules/ILogEvent.md)
+- [LogEvent](modules/LogEvent.md)
+- [LogLevel](modules/LogLevel.md)
+- [Logger](modules/Logger.md)
 - [api](modules/api.md)

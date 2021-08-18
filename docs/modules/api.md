@@ -1,4 +1,4 @@
-[@arashi/logger](../README.md) / [Exports](../modules.md) / api
+[@arashi/logger - v2.0.0](../README.md) / [Exports](../modules.md) / api
 
 # Module: api
 
@@ -15,22 +15,22 @@
 
 ### ILogEvent
 
-Re-exports: [ILogEvent](../interfaces/ilogevent.ilogevent-1.md)
+Re-exports: [ILogEvent](../interfaces/ILogEvent.ILogEvent-1.md)
 
 ___
 
 ### LogEvent
 
-Re-exports: [LogEvent](../enums/logevent.logevent-1.md)
+Re-exports: [LogEvent](../enums/LogEvent.LogEvent-1.md)
 
 ___
 
 ### LogLevel
 
-Re-exports: [LogLevel](../enums/loglevel.loglevel-1.md)
+Re-exports: [LogLevel](../enums/LogLevel.LogLevel-1.md)
 
 ___
 
 ### Logger
 
-Re-exports: [Logger](../classes/logger.logger-1.md)
+Re-exports: [Logger](../classes/Logger.Logger-1.md)
