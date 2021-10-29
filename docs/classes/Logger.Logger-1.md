@@ -1,4 +1,4 @@
-[@arashi/logger - v2.0.1](../README.md) / [Exports](../modules.md) / [Logger](../modules/Logger.md) / Logger
+[@arashi/logger - v2.1.0](../README.md) / [Exports](../modules.md) / [Logger](../modules/Logger.md) / Logger
 
 # Class: Logger
 
@@ -38,6 +38,7 @@
 - [eventNames](Logger.Logger-1.md#eventnames)
 - [getFilters](Logger.Logger-1.md#getfilters)
 - [getLogLevel](Logger.Logger-1.md#getloglevel)
+- [getMaxFileSize](Logger.Logger-1.md#getmaxfilesize)
 - [getMaxListeners](Logger.Logger-1.md#getmaxlisteners)
 - [info](Logger.Logger-1.md#info)
 - [listenerCount](Logger.Logger-1.md#listenercount)
@@ -59,7 +60,7 @@
 - [trace](Logger.Logger-1.md#trace)
 - [verbose](Logger.Logger-1.md#verbose)
 - [warn](Logger.Logger-1.md#warn)
-- [getEventListener](Logger.Logger-1.md#geteventlistener)
+- [getEventListeners](Logger.Logger-1.md#geteventlisteners)
 - [listenerCount](Logger.Logger-1.md#listenercount)
 - [on](Logger.Logger-1.md#on)
 - [once](Logger.Logger-1.md#once)
@@ -84,7 +85,7 @@ EventEmitter.constructor
 
 #### Defined in
 
-[src/Logger.ts:34](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L34)
+[src/Logger.ts:36](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L36)
 
 ## Properties
 
@@ -98,7 +99,7 @@ EventEmitter.captureRejectionSymbol
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:94
+node_modules/@types/node/events.d.ts:273
 
 ___
 
@@ -114,7 +115,7 @@ EventEmitter.captureRejections
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:99
+node_modules/@types/node/events.d.ts:278
 
 ___
 
@@ -128,7 +129,7 @@ EventEmitter.defaultMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:100
+node_modules/@types/node/events.d.ts:279
 
 ___
 
@@ -150,7 +151,7 @@ EventEmitter.errorMonitor
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:93
+node_modules/@types/node/events.d.ts:272
 
 ## Methods
 
@@ -170,7 +171,7 @@ node_modules/@types/node/events.d.ts:93
 
 #### Defined in
 
-[src/Logger.ts:161](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L161)
+[src/Logger.ts:170](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L170)
 
 ___
 
@@ -184,7 +185,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:157](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L157)
+[src/Logger.ts:166](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L166)
 
 ___
 
@@ -204,7 +205,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:166](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L166)
+[src/Logger.ts:175](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L175)
 
 ___
 
@@ -224,7 +225,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:133](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L133)
+[src/Logger.ts:142](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L142)
 
 ___
 
@@ -253,7 +254,7 @@ EventEmitter.addListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:120
+node_modules/@types/node/events.d.ts:299
 
 ___
 
@@ -275,7 +276,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:228](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L228)
+[src/Logger.ts:237](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L237)
 
 ___
 
@@ -297,7 +298,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:252](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L252)
+[src/Logger.ts:261](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L261)
 
 ___
 
@@ -320,7 +321,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:272](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L272)
+[src/Logger.ts:281](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L281)
 
 ___
 
@@ -385,7 +386,7 @@ EventEmitter.emit
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:376
+node_modules/@types/node/events.d.ts:555
 
 ___
 
@@ -407,7 +408,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:248](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L248)
+[src/Logger.ts:257](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L257)
 
 ___
 
@@ -443,7 +444,7 @@ EventEmitter.eventNames
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:435
+node_modules/@types/node/events.d.ts:614
 
 ___
 
@@ -457,7 +458,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:153](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L153)
+[src/Logger.ts:162](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L162)
 
 ___
 
@@ -471,7 +472,21 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:129](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L129)
+[src/Logger.ts:138](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L138)
+
+___
+
+### getMaxFileSize
+
+▸ **getMaxFileSize**(): `number`
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+[src/Logger.ts:130](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L130)
 
 ___
 
@@ -494,7 +509,7 @@ EventEmitter.getMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:292
+node_modules/@types/node/events.d.ts:471
 
 ___
 
@@ -516,7 +531,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:238](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L238)
+[src/Logger.ts:247](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L247)
 
 ___
 
@@ -544,7 +559,7 @@ EventEmitter.listenerCount
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:382
+node_modules/@types/node/events.d.ts:561
 
 ___
 
@@ -580,7 +595,7 @@ EventEmitter.listeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:305
+node_modules/@types/node/events.d.ts:484
 
 ___
 
@@ -603,7 +618,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:198](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L198)
+[src/Logger.ts:207](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L207)
 
 ___
 
@@ -632,7 +647,7 @@ EventEmitter.off
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:265
+node_modules/@types/node/events.d.ts:444
 
 ___
 
@@ -685,7 +700,7 @@ EventEmitter.on
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:151
+node_modules/@types/node/events.d.ts:330
 
 ___
 
@@ -736,7 +751,7 @@ EventEmitter.once
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:180
+node_modules/@types/node/events.d.ts:359
 
 ___
 
@@ -776,7 +791,7 @@ EventEmitter.prependListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:400
+node_modules/@types/node/events.d.ts:579
 
 ___
 
@@ -814,7 +829,7 @@ EventEmitter.prependOnceListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:416
+node_modules/@types/node/events.d.ts:595
 
 ___
 
@@ -867,7 +882,7 @@ EventEmitter.rawListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:335
+node_modules/@types/node/events.d.ts:514
 
 ___
 
@@ -901,7 +916,7 @@ EventEmitter.removeAllListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:276
+node_modules/@types/node/events.d.ts:455
 
 ___
 
@@ -921,7 +936,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:137](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L137)
+[src/Logger.ts:146](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L146)
 
 ___
 
@@ -1025,7 +1040,7 @@ EventEmitter.removeListener
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:260
+node_modules/@types/node/events.d.ts:439
 
 ___
 
@@ -1045,7 +1060,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:144](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L144)
+[src/Logger.ts:153](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L153)
 
 ___
 
@@ -1065,7 +1080,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:125](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L125)
+[src/Logger.ts:134](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L134)
 
 ___
 
@@ -1098,7 +1113,7 @@ EventEmitter.setMaxListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:286
+node_modules/@types/node/events.d.ts:465
 
 ___
 
@@ -1120,7 +1135,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:223](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L223)
+[src/Logger.ts:232](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L232)
 
 ___
 
@@ -1144,7 +1159,7 @@ Alias for `silly`
 
 #### Defined in
 
-[src/Logger.ts:218](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L218)
+[src/Logger.ts:227](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L227)
 
 ___
 
@@ -1166,7 +1181,7 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:233](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L233)
+[src/Logger.ts:242](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L242)
 
 ___
 
@@ -1188,15 +1203,40 @@ ___
 
 #### Defined in
 
-[src/Logger.ts:243](https://github.com/arashijs/logger/blob/ea93ee1/src/Logger.ts#L243)
+[src/Logger.ts:252](https://github.com/arashijs/logger/blob/c50e05b/src/Logger.ts#L252)
 
 ___
 
-### getEventListener
+### getEventListeners
 
-▸ `Static` **getEventListener**(`emitter`, `name`): `Function`[]
+▸ `Static` **getEventListeners**(`emitter`, `name`): `Function`[]
 
-Returns a list listener for a specific emitter event name.
+Returns a copy of the array of listeners for the event named `eventName`.
+
+For `EventEmitter`s this behaves exactly the same as calling `.listeners` on
+the emitter.
+
+For `EventTarget`s this is the only way to get the event listeners for the
+event target. This is useful for debugging and diagnostic purposes.
+
+```js
+const { getEventListeners, EventEmitter } = require('events');
+
+{
+  const ee = new EventEmitter();
+  const listener = () => console.log('Events are fun');
+  ee.on('foo', listener);
+  getEventListeners(ee, 'foo'); // [listener]
+}
+{
+  const et = new EventTarget();
+  const listener = () => console.log('Events are fun');
+  et.addEventListener('foo', listener);
+  getEventListeners(et, 'foo'); // [listener]
+}
+```
+
+**`since`** v15.2.0
 
 #### Parameters
 
@@ -1211,11 +1251,11 @@ Returns a list listener for a specific emitter event name.
 
 #### Inherited from
 
-EventEmitter.getEventListener
+EventEmitter.getEventListeners
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:83
+node_modules/@types/node/events.d.ts:262
 
 ___
 
@@ -1223,14 +1263,27 @@ ___
 
 ▸ `Static` **listenerCount**(`emitter`, `eventName`): `number`
 
-**`deprecated`** since v4.0.0
+A class method that returns the number of listeners for the given `eventName`registered on the given `emitter`.
+
+```js
+const { EventEmitter, listenerCount } = require('events');
+const myEmitter = new EventEmitter();
+myEmitter.on('event', () => {});
+myEmitter.on('event', () => {});
+console.log(listenerCount(myEmitter, 'event'));
+// Prints: 2
+```
+
+**`since`** v0.9.12
+
+**`deprecated`** Since v3.2.0 - Use `listenerCount` instead.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `emitter` | `EventEmitter` |
-| `eventName` | `string` \| `symbol` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `emitter` | `EventEmitter` | The emitter to query |
+| `eventName` | `string` \| `symbol` | The event name |
 
 #### Returns
 
@@ -1242,7 +1295,7 @@ EventEmitter.listenerCount
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:79
+node_modules/@types/node/events.d.ts:234
 
 ___
 
@@ -1250,17 +1303,75 @@ ___
 
 ▸ `Static` **on**(`emitter`, `eventName`, `options?`): `AsyncIterableIterator`<`any`\>
 
+```js
+const { on, EventEmitter } = require('events');
+
+(async () => {
+  const ee = new EventEmitter();
+
+  // Emit later on
+  process.nextTick(() => {
+    ee.emit('foo', 'bar');
+    ee.emit('foo', 42);
+  });
+
+  for await (const event of on(ee, 'foo')) {
+    // The execution of this inner block is synchronous and it
+    // processes one event at a time (even with await). Do not use
+    // if concurrent execution is required.
+    console.log(event); // prints ['bar'] [42]
+  }
+  // Unreachable here
+})();
+```
+
+Returns an `AsyncIterator` that iterates `eventName` events. It will throw
+if the `EventEmitter` emits `'error'`. It removes all listeners when
+exiting the loop. The `value` returned by each iteration is an array
+composed of the emitted event arguments.
+
+An `AbortSignal` can be used to cancel waiting on events:
+
+```js
+const { on, EventEmitter } = require('events');
+const ac = new AbortController();
+
+(async () => {
+  const ee = new EventEmitter();
+
+  // Emit later on
+  process.nextTick(() => {
+    ee.emit('foo', 'bar');
+    ee.emit('foo', 42);
+  });
+
+  for await (const event of on(ee, 'foo', { signal: ac.signal })) {
+    // The execution of this inner block is synchronous and it
+    // processes one event at a time (even with await). Do not use
+    // if concurrent execution is required.
+    console.log(event); // prints ['bar'] [42]
+  }
+  // Unreachable here
+})();
+
+process.nextTick(() => ac.abort());
+```
+
+**`since`** v13.6.0, v12.16.0
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `emitter` | `EventEmitter` |
-| `eventName` | `string` |
-| `options?` | `StaticEventEmitterOptions` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `emitter` | `EventEmitter` | - |
+| `eventName` | `string` | The name of the event being listened for |
+| `options?` | `StaticEventEmitterOptions` | - |
 
 #### Returns
 
 `AsyncIterableIterator`<`any`\>
+
+that iterates `eventName` events emitted by the `emitter`
 
 #### Inherited from
 
@@ -1268,13 +1379,95 @@ EventEmitter.on
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:77
+node_modules/@types/node/events.d.ts:217
 
 ___
 
 ### once
 
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
+
+Creates a `Promise` that is fulfilled when the `EventEmitter` emits the given
+event or that is rejected if the `EventEmitter` emits `'error'` while waiting.
+The `Promise` will resolve with an array of all the arguments emitted to the
+given event.
+
+This method is intentionally generic and works with the web platform [EventTarget](https://dom.spec.whatwg.org/#interface-eventtarget) interface, which has no special`'error'` event
+semantics and does not listen to the `'error'` event.
+
+```js
+const { once, EventEmitter } = require('events');
+
+async function run() {
+  const ee = new EventEmitter();
+
+  process.nextTick(() => {
+    ee.emit('myevent', 42);
+  });
+
+  const [value] = await once(ee, 'myevent');
+  console.log(value);
+
+  const err = new Error('kaboom');
+  process.nextTick(() => {
+    ee.emit('error', err);
+  });
+
+  try {
+    await once(ee, 'myevent');
+  } catch (err) {
+    console.log('error happened', err);
+  }
+}
+
+run();
+```
+
+The special handling of the `'error'` event is only used when `events.once()`is used to wait for another event. If `events.once()` is used to wait for the
+'`error'` event itself, then it is treated as any other kind of event without
+special handling:
+
+```js
+const { EventEmitter, once } = require('events');
+
+const ee = new EventEmitter();
+
+once(ee, 'error')
+  .then(([err]) => console.log('ok', err.message))
+  .catch((err) => console.log('error', err.message));
+
+ee.emit('error', new Error('boom'));
+
+// Prints: ok boom
+```
+
+An `AbortSignal` can be used to cancel waiting for the event:
+
+```js
+const { EventEmitter, once } = require('events');
+
+const ee = new EventEmitter();
+const ac = new AbortController();
+
+async function foo(emitter, event, signal) {
+  try {
+    await once(emitter, event, { signal });
+    console.log('event emitted!');
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      console.error('Waiting for the event was canceled!');
+    } else {
+      console.error('There was an error', error.message);
+    }
+  }
+}
+
+foo(ee, 'foo', ac.signal);
+ac.abort(); // Abort waiting for the event
+ee.emit('foo'); // Prints: Waiting for the event was canceled!
+```
+
+**`since`** v11.13.0, v10.16.0
 
 #### Parameters
 
@@ -1294,7 +1487,7 @@ EventEmitter.once
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:75
+node_modules/@types/node/events.d.ts:157
 
 ▸ `Static` **once**(`emitter`, `eventName`, `options?`): `Promise`<`any`[]\>
 
@@ -1316,4 +1509,4 @@ EventEmitter.once
 
 #### Defined in
 
-node_modules/@types/node/events.d.ts:76
+node_modules/@types/node/events.d.ts:158

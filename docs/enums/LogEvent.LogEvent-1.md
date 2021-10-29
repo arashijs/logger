@@ -1,4 +1,4 @@
-[@arashi/logger - v2.0.1](../README.md) / [Exports](../modules.md) / [LogEvent](../modules/LogEvent.md) / LogEvent
+[@arashi/logger - v2.1.0](../README.md) / [Exports](../modules.md) / [LogEvent](../modules/LogEvent.md) / LogEvent
 
 # Enumeration: LogEvent
 
@@ -18,4 +18,4 @@
 
 #### Defined in
 
-[src/LogEvent.ts:17](https://github.com/arashijs/logger/blob/ea93ee1/src/LogEvent.ts#L17)
+[src/LogEvent.ts:17](https://github.com/arashijs/logger/blob/c50e05b/src/LogEvent.ts#L17)
