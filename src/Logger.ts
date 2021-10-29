@@ -25,6 +25,8 @@ const F_DIM: string = '\x1b[2m';
 const F_FG_BLUE: string = '\x1b[34m';
 const F_FG_CYAN: string = '\x1b[36m';
 
+const DEFAULT_MAX_FILE_SIZE: number = 52428800; // 50MB
+
 export class Logger extends EventEmitter {
     private $filters: Array<RegExp>;
     private $logger: Winston.Logger;
@@ -64,6 +66,7 @@ export class Logger extends EventEmitter {
             transports.push(new Winston.transports.File({
                 filename: Path.resolve(this.$logLocation, `${serviceName}.json.log`),
                 level: logLevel,
+                maxsize: this.getMaxFileSize(),
                 format: Winston.format.combine(
                     Winston.format.json(),
                     Winston.format.errors({ stack: true }),
@@ -89,6 +92,7 @@ export class Logger extends EventEmitter {
             }));
             transports.push(new Winston.transports.File({
                 filename: Path.resolve(this.$logLocation, `${serviceName}.log`),
+                maxsize: this.getMaxFileSize(),
                 level: logLevel,
                 format: Winston.format.combine(
                     Winston.format.simple(),
@@ -98,6 +102,7 @@ export class Logger extends EventEmitter {
             }));
             transports.push(new Winston.transports.File({
                 filename: Path.resolve(this.$logLocation, `${serviceName}.errors.log`),
+                maxsize: this.getMaxFileSize(),
                 level: LogLevel.WARN,
                 format: Winston.format.combine(
                     Winston.format.simple(),
@@ -120,6 +125,10 @@ export class Logger extends EventEmitter {
             },
             transports: transports
         });
+    }
+
+    public getMaxFileSize(): number {
+        return DEFAULT_MAX_FILE_SIZE;
     }
 
     public setLogLevel(level: LogLevel): void {
