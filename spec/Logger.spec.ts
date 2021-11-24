@@ -1,4 +1,5 @@
 
+import { LogEvent } from '../src/LogEvent';
 import {Logger} from '../src/Logger';
 import { LogLevel } from '../src/LogLevel';
 
@@ -7,6 +8,18 @@ describe('Logger', () => {
 
     beforeEach(() => {
         logger = new Logger('test');
+    });
+
+    it('emits LogEvent.LOG events', (done) => {
+        let spy: jasmine.Spy = jasmine.createSpy('log event');
+        logger.on(LogEvent.LOG, spy);
+
+        logger.info('test', 'test message');
+
+        setTimeout(() => {
+            expect(spy).toBeCalledWith('test message');
+            done();
+        }, 1);
     });
 
     it('Sets default Log Level', () => {
