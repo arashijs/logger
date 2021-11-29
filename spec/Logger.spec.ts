@@ -1,7 +1,9 @@
 
-import { LogEvent } from '../src/LogEvent';
 import {Logger} from '../src/Logger';
-import { LogLevel } from '../src/LogLevel';
+import {
+    LogLevel,
+    LogEvent
+} from '@arashi/interfaces';
 
 describe('Logger', () => {
     let logger: Logger = null;

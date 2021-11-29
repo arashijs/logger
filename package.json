@@ -1,6 +1,6 @@
 {
   "name": "@arashi/logger",
-  "version": "2.1.0",
+  "version": "3.0.0-dev",
   "description": "Logger",
   "main": "./lib/api.js",
   "publishConfig": {
@@ -8,9 +8,14 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
+    "events": "3.3.0",
     "winston": "3.3.3"
   },
+  "peerDependencies": {
+    "@arashi/interfaces": ">=1.1.0 <2.0.0"
+  },
   "devDependencies": {
+    "@arashi/interfaces": "file:../interfaces/arashi-interfaces-1.1.0-dev.tgz",
     "@totalpave/eslint-plugin": "6.0.1",
     "@types/jest": "27.0.3",
     "@types/node": "16.11.10",

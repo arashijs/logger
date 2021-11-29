@@ -15,9 +15,12 @@
 
 import * as utils from 'util';
 import * as Winston from 'winston';
-import { LogLevel } from './LogLevel';
+import {
+    LogLevel,
+    LogEvent,
+    ILogger
+} from '@arashi/interfaces';
 import {EventEmitter} from 'events';
-import {LogEvent} from './LogEvent';
 import * as Path from 'path';
 
 const F_RESET: string = '\x1b[0m';
@@ -27,7 +30,7 @@ const F_FG_CYAN: string = '\x1b[36m';
 
 const DEFAULT_MAX_FILE_SIZE: number = 52428800; // 50MB
 
-export class Logger extends EventEmitter {
+export class Logger extends EventEmitter implements ILogger {
     private $filters: Array<RegExp>;
     private $logger: Winston.Logger;
     private $logLocation: string;
