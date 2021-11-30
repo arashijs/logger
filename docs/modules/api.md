@@ -1,4 +1,4 @@
-[@arashi/logger - v2.1.0](../README.md) / [Exports](../modules.md) / api
+[@arashi/logger - v3.0.0](../README.md) / [Exports](../modules.md) / api
 
 # Module: api
 
@@ -6,28 +6,21 @@
 
 ### References
 
-- [ILogEvent](api.md#ilogevent)
-- [LogEvent](api.md#logevent)
-- [LogLevel](api.md#loglevel)
+- [ConsoleLogger](api.md#consolelogger)
+- [ILogMetadata](api.md#ilogmetadata)
 - [Logger](api.md#logger)
 
 ## References
 
-### ILogEvent
+### ConsoleLogger
 
-Re-exports: [ILogEvent](../interfaces/ILogEvent.ILogEvent-1.md)
-
-___
-
-### LogEvent
-
-Re-exports: [LogEvent](../enums/LogEvent.LogEvent-1.md)
+Re-exports: [ConsoleLogger](../classes/ConsoleLogger.ConsoleLogger-1.md)
 
 ___
 
-### LogLevel
+### ILogMetadata
 
-Re-exports: [LogLevel](../enums/LogLevel.LogLevel-1.md)
+Re-exports: [ILogMetadata](../interfaces/Logger.ILogMetadata.md)
 
 ___
 

@@ -1,81 +1,75 @@
-[@arashi/logger - v3.0.0](../README.md) / [Exports](../modules.md) / [Logger](../modules/Logger.md) / Logger
+[@arashi/logger - v3.0.0](../README.md) / [Exports](../modules.md) / [ConsoleLogger](../modules/ConsoleLogger.md) / ConsoleLogger
 
-# Class: Logger
+# Class: ConsoleLogger
 
-[Logger](../modules/Logger.md).Logger
+[ConsoleLogger](../modules/ConsoleLogger.md).ConsoleLogger
 
 ## Hierarchy
 
-- `EventEmitter`
+- [`Logger`](Logger.Logger-1.md)
 
-  ↳ **`Logger`**
-
-  ↳↳ [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
-
-## Implements
-
-- `ILogger`
+  ↳ **`ConsoleLogger`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Logger.Logger-1.md#constructor)
+- [constructor](ConsoleLogger.ConsoleLogger-1.md#constructor)
 
 ### Properties
 
-- [captureRejectionSymbol](Logger.Logger-1.md#capturerejectionsymbol)
-- [captureRejections](Logger.Logger-1.md#capturerejections)
-- [defaultMaxListeners](Logger.Logger-1.md#defaultmaxlisteners)
-- [errorMonitor](Logger.Logger-1.md#errormonitor)
+- [captureRejectionSymbol](ConsoleLogger.ConsoleLogger-1.md#capturerejectionsymbol)
+- [captureRejections](ConsoleLogger.ConsoleLogger-1.md#capturerejections)
+- [defaultMaxListeners](ConsoleLogger.ConsoleLogger-1.md#defaultmaxlisteners)
+- [errorMonitor](ConsoleLogger.ConsoleLogger-1.md#errormonitor)
 
 ### Methods
 
-- [\_formatDate](Logger.Logger-1.md#_formatdate)
-- [\_getDefaultLogFilters](Logger.Logger-1.md#_getdefaultlogfilters)
-- [\_log](Logger.Logger-1.md#_log)
-- [\_shouldFilter](Logger.Logger-1.md#_shouldfilter)
-- [addFilter](Logger.Logger-1.md#addfilter)
-- [addListener](Logger.Logger-1.md#addlistener)
-- [debug](Logger.Logger-1.md#debug)
-- [deprecate](Logger.Logger-1.md#deprecate)
-- [deprecateParameterType](Logger.Logger-1.md#deprecateparametertype)
-- [emit](Logger.Logger-1.md#emit)
-- [error](Logger.Logger-1.md#error)
-- [eventNames](Logger.Logger-1.md#eventnames)
-- [getFilters](Logger.Logger-1.md#getfilters)
-- [getLogLevel](Logger.Logger-1.md#getloglevel)
-- [getMaxListeners](Logger.Logger-1.md#getmaxlisteners)
-- [info](Logger.Logger-1.md#info)
-- [listenerCount](Logger.Logger-1.md#listenercount)
-- [listeners](Logger.Logger-1.md#listeners)
-- [log](Logger.Logger-1.md#log)
-- [off](Logger.Logger-1.md#off)
-- [on](Logger.Logger-1.md#on)
-- [once](Logger.Logger-1.md#once)
-- [prependListener](Logger.Logger-1.md#prependlistener)
-- [prependOnceListener](Logger.Logger-1.md#prependoncelistener)
-- [rawListeners](Logger.Logger-1.md#rawlisteners)
-- [removeAllListeners](Logger.Logger-1.md#removealllisteners)
-- [removeFilter](Logger.Logger-1.md#removefilter)
-- [removeListener](Logger.Logger-1.md#removelistener)
-- [setFilters](Logger.Logger-1.md#setfilters)
-- [setLogLevel](Logger.Logger-1.md#setloglevel)
-- [setMaxListeners](Logger.Logger-1.md#setmaxlisteners)
-- [silly](Logger.Logger-1.md#silly)
-- [trace](Logger.Logger-1.md#trace)
-- [verbose](Logger.Logger-1.md#verbose)
-- [warn](Logger.Logger-1.md#warn)
-- [getEventListeners](Logger.Logger-1.md#geteventlisteners)
-- [listenerCount](Logger.Logger-1.md#listenercount)
-- [on](Logger.Logger-1.md#on)
-- [once](Logger.Logger-1.md#once)
+- [\_formatDate](ConsoleLogger.ConsoleLogger-1.md#_formatdate)
+- [\_getDefaultLogFilters](ConsoleLogger.ConsoleLogger-1.md#_getdefaultlogfilters)
+- [\_log](ConsoleLogger.ConsoleLogger-1.md#_log)
+- [\_shouldFilter](ConsoleLogger.ConsoleLogger-1.md#_shouldfilter)
+- [addFilter](ConsoleLogger.ConsoleLogger-1.md#addfilter)
+- [addListener](ConsoleLogger.ConsoleLogger-1.md#addlistener)
+- [debug](ConsoleLogger.ConsoleLogger-1.md#debug)
+- [deprecate](ConsoleLogger.ConsoleLogger-1.md#deprecate)
+- [deprecateParameterType](ConsoleLogger.ConsoleLogger-1.md#deprecateparametertype)
+- [emit](ConsoleLogger.ConsoleLogger-1.md#emit)
+- [error](ConsoleLogger.ConsoleLogger-1.md#error)
+- [eventNames](ConsoleLogger.ConsoleLogger-1.md#eventnames)
+- [getFilters](ConsoleLogger.ConsoleLogger-1.md#getfilters)
+- [getLogLevel](ConsoleLogger.ConsoleLogger-1.md#getloglevel)
+- [getMaxListeners](ConsoleLogger.ConsoleLogger-1.md#getmaxlisteners)
+- [info](ConsoleLogger.ConsoleLogger-1.md#info)
+- [listenerCount](ConsoleLogger.ConsoleLogger-1.md#listenercount)
+- [listeners](ConsoleLogger.ConsoleLogger-1.md#listeners)
+- [log](ConsoleLogger.ConsoleLogger-1.md#log)
+- [off](ConsoleLogger.ConsoleLogger-1.md#off)
+- [on](ConsoleLogger.ConsoleLogger-1.md#on)
+- [once](ConsoleLogger.ConsoleLogger-1.md#once)
+- [prependListener](ConsoleLogger.ConsoleLogger-1.md#prependlistener)
+- [prependOnceListener](ConsoleLogger.ConsoleLogger-1.md#prependoncelistener)
+- [rawListeners](ConsoleLogger.ConsoleLogger-1.md#rawlisteners)
+- [removeAllListeners](ConsoleLogger.ConsoleLogger-1.md#removealllisteners)
+- [removeFilter](ConsoleLogger.ConsoleLogger-1.md#removefilter)
+- [removeListener](ConsoleLogger.ConsoleLogger-1.md#removelistener)
+- [setFilters](ConsoleLogger.ConsoleLogger-1.md#setfilters)
+- [setLogLevel](ConsoleLogger.ConsoleLogger-1.md#setloglevel)
+- [setMaxListeners](ConsoleLogger.ConsoleLogger-1.md#setmaxlisteners)
+- [silly](ConsoleLogger.ConsoleLogger-1.md#silly)
+- [trace](ConsoleLogger.ConsoleLogger-1.md#trace)
+- [verbose](ConsoleLogger.ConsoleLogger-1.md#verbose)
+- [warn](ConsoleLogger.ConsoleLogger-1.md#warn)
+- [getEventListeners](ConsoleLogger.ConsoleLogger-1.md#geteventlisteners)
+- [listenerCount](ConsoleLogger.ConsoleLogger-1.md#listenercount)
+- [on](ConsoleLogger.ConsoleLogger-1.md#on)
+- [once](ConsoleLogger.ConsoleLogger-1.md#once)
 
 ## Constructors
 
 ### constructor
 
-• **new Logger**(`serviceName?`, `logLevel?`)
+• **new ConsoleLogger**(`serviceName?`, `logLevel?`)
 
 #### Parameters
 
@@ -84,9 +78,9 @@
 | `serviceName` | `string` | `'Generic'` |
 | `logLevel` | `LogLevel` | `undefined` |
 
-#### Overrides
+#### Inherited from
 
-EventEmitter.constructor
+[Logger](Logger.Logger-1.md).[constructor](Logger.Logger-1.md#constructor)
 
 #### Defined in
 
@@ -100,7 +94,7 @@ EventEmitter.constructor
 
 #### Inherited from
 
-EventEmitter.captureRejectionSymbol
+[Logger](Logger.Logger-1.md).[captureRejectionSymbol](Logger.Logger-1.md#capturerejectionsymbol)
 
 #### Defined in
 
@@ -116,7 +110,7 @@ Sets or gets the default captureRejection value for all emitters.
 
 #### Inherited from
 
-EventEmitter.captureRejections
+[Logger](Logger.Logger-1.md).[captureRejections](Logger.Logger-1.md#capturerejections)
 
 #### Defined in
 
@@ -130,7 +124,7 @@ ___
 
 #### Inherited from
 
-EventEmitter.defaultMaxListeners
+[Logger](Logger.Logger-1.md).[defaultMaxListeners](Logger.Logger-1.md#defaultmaxlisteners)
 
 #### Defined in
 
@@ -152,7 +146,7 @@ regular `'error'` listener is installed.
 
 #### Inherited from
 
-EventEmitter.errorMonitor
+[Logger](Logger.Logger-1.md).[errorMonitor](Logger.Logger-1.md#errormonitor)
 
 #### Defined in
 
@@ -174,6 +168,10 @@ node_modules/@types/node/events.d.ts:272
 
 `string`
 
+#### Inherited from
+
+[Logger](Logger.Logger-1.md).[_formatDate](Logger.Logger-1.md#_formatdate)
+
 #### Defined in
 
 [src/Logger.ts:179](https://github.com/arashijs/logger/blob/9bf4ab6/src/Logger.ts#L179)
@@ -188,6 +186,10 @@ ___
 
 `RegExp`[]
 
+#### Inherited from
+
+[Logger](Logger.Logger-1.md).[_getDefaultLogFilters](Logger.Logger-1.md#_getdefaultlogfilters)
+
 #### Defined in
 
 [src/Logger.ts:175](https://github.com/arashijs/logger/blob/9bf4ab6/src/Logger.ts#L175)
@@ -196,13 +198,13 @@ ___
 
 ### \_log
 
-▸ `Protected` `Abstract` **_log**(`logLevel`, `message`, `metadata`): `void`
+▸ `Protected` **_log**(`level`, `message`, `metadata`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `logLevel` | `LogLevel` |
+| `level` | `LogLevel` |
 | `message` | `string` |
 | `metadata` | [`ILogMetadata`](../interfaces/Logger.ILogMetadata.md) |
 
@@ -210,9 +212,13 @@ ___
 
 `void`
 
+#### Overrides
+
+[Logger](Logger.Logger-1.md).[_log](Logger.Logger-1.md#_log)
+
 #### Defined in
 
-[src/Logger.ts:215](https://github.com/arashijs/logger/blob/9bf4ab6/src/Logger.ts#L215)
+[src/ConsoleLogger.ts:9](https://github.com/arashijs/logger/blob/9bf4ab6/src/ConsoleLogger.ts#L9)
 
 ___
 
@@ -229,6 +235,10 @@ ___
 #### Returns
 
 `boolean`
+
+#### Inherited from
+
+[Logger](Logger.Logger-1.md).[_shouldFilter](Logger.Logger-1.md#_shouldfilter)
 
 #### Defined in
 
@@ -250,9 +260,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.addFilter
+[Logger](Logger.Logger-1.md).[addFilter](Logger.Logger-1.md#addfilter)
 
 #### Defined in
 
@@ -262,7 +272,7 @@ ___
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **addListener**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -277,11 +287,11 @@ Alias for `emitter.on(eventName, listener)`.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.addListener
+[Logger](Logger.Logger-1.md).[addListener](Logger.Logger-1.md#addlistener)
 
 #### Defined in
 
@@ -305,9 +315,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.debug
+[Logger](Logger.Logger-1.md).[debug](Logger.Logger-1.md#debug)
 
 #### Defined in
 
@@ -331,9 +341,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.deprecate
+[Logger](Logger.Logger-1.md).[deprecate](Logger.Logger-1.md#deprecate)
 
 #### Defined in
 
@@ -358,9 +368,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.deprecateParameterType
+[Logger](Logger.Logger-1.md).[deprecateParameterType](Logger.Logger-1.md#deprecateparametertype)
 
 #### Defined in
 
@@ -425,7 +435,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 #### Inherited from
 
-EventEmitter.emit
+[Logger](Logger.Logger-1.md).[emit](Logger.Logger-1.md#emit)
 
 #### Defined in
 
@@ -449,9 +459,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.error
+[Logger](Logger.Logger-1.md).[error](Logger.Logger-1.md#error)
 
 #### Defined in
 
@@ -487,7 +497,7 @@ console.log(myEE.eventNames());
 
 #### Inherited from
 
-EventEmitter.eventNames
+[Logger](Logger.Logger-1.md).[eventNames](Logger.Logger-1.md#eventnames)
 
 #### Defined in
 
@@ -503,9 +513,9 @@ ___
 
 `RegExp`[]
 
-#### Implementation of
+#### Inherited from
 
-ILogger.getFilters
+[Logger](Logger.Logger-1.md).[getFilters](Logger.Logger-1.md#getfilters)
 
 #### Defined in
 
@@ -521,9 +531,9 @@ ___
 
 `LogLevel`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.getLogLevel
+[Logger](Logger.Logger-1.md).[getLogLevel](Logger.Logger-1.md#getloglevel)
 
 #### Defined in
 
@@ -536,7 +546,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](Logger.Logger-1.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](ConsoleLogger.ConsoleLogger-1.md#defaultmaxlisteners).
 
 **`since`** v1.0.0
 
@@ -546,7 +556,7 @@ set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](Logger.
 
 #### Inherited from
 
-EventEmitter.getMaxListeners
+[Logger](Logger.Logger-1.md).[getMaxListeners](Logger.Logger-1.md#getmaxlisteners)
 
 #### Defined in
 
@@ -570,9 +580,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.info
+[Logger](Logger.Logger-1.md).[info](Logger.Logger-1.md#info)
 
 #### Defined in
 
@@ -600,7 +610,7 @@ Returns the number of listeners listening to the event named `eventName`.
 
 #### Inherited from
 
-EventEmitter.listenerCount
+[Logger](Logger.Logger-1.md).[listenerCount](Logger.Logger-1.md#listenercount)
 
 #### Defined in
 
@@ -636,7 +646,7 @@ console.log(util.inspect(server.listeners('connection')));
 
 #### Inherited from
 
-EventEmitter.listeners
+[Logger](Logger.Logger-1.md).[listeners](Logger.Logger-1.md#listeners)
 
 #### Defined in
 
@@ -661,9 +671,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.log
+[Logger](Logger.Logger-1.md).[log](Logger.Logger-1.md#log)
 
 #### Defined in
 
@@ -673,7 +683,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **off**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -688,11 +698,11 @@ Alias for `emitter.removeListener()`.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.off
+[Logger](Logger.Logger-1.md).[off](Logger.Logger-1.md#off)
 
 #### Defined in
 
@@ -702,7 +712,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **on**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -741,11 +751,11 @@ myEE.emit('foo');
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.on
+[Logger](Logger.Logger-1.md).[on](Logger.Logger-1.md#on)
 
 #### Defined in
 
@@ -755,7 +765,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **once**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -792,11 +802,11 @@ myEE.emit('foo');
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.once
+[Logger](Logger.Logger-1.md).[once](Logger.Logger-1.md#once)
 
 #### Defined in
 
@@ -806,7 +816,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **prependListener**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -832,11 +842,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.prependListener
+[Logger](Logger.Logger-1.md).[prependListener](Logger.Logger-1.md#prependlistener)
 
 #### Defined in
 
@@ -846,7 +856,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the_beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -870,11 +880,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.prependOnceListener
+[Logger](Logger.Logger-1.md).[prependOnceListener](Logger.Logger-1.md#prependoncelistener)
 
 #### Defined in
 
@@ -927,7 +937,7 @@ emitter.emit('log');
 
 #### Inherited from
 
-EventEmitter.rawListeners
+[Logger](Logger.Logger-1.md).[rawListeners](Logger.Logger-1.md#rawlisteners)
 
 #### Defined in
 
@@ -937,7 +947,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`Logger`](Logger.Logger-1.md)
+▸ **removeAllListeners**(`event?`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -957,11 +967,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.removeAllListeners
+[Logger](Logger.Logger-1.md).[removeAllListeners](Logger.Logger-1.md#removealllisteners)
 
 #### Defined in
 
@@ -983,9 +993,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.removeFilter
+[Logger](Logger.Logger-1.md).[removeFilter](Logger.Logger-1.md#removefilter)
 
 #### Defined in
 
@@ -995,7 +1005,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`Logger`](Logger.Logger-1.md)
+▸ **removeListener**(`eventName`, `listener`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -1085,11 +1095,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.removeListener
+[Logger](Logger.Logger-1.md).[removeListener](Logger.Logger-1.md#removelistener)
 
 #### Defined in
 
@@ -1111,9 +1121,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.setFilters
+[Logger](Logger.Logger-1.md).[setFilters](Logger.Logger-1.md#setfilters)
 
 #### Defined in
 
@@ -1135,9 +1145,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.setLogLevel
+[Logger](Logger.Logger-1.md).[setLogLevel](Logger.Logger-1.md#setloglevel)
 
 #### Defined in
 
@@ -1147,7 +1157,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`Logger`](Logger.Logger-1.md)
+▸ **setMaxListeners**(`n`): [`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1166,11 +1176,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Logger`](Logger.Logger-1.md)
+[`ConsoleLogger`](ConsoleLogger.ConsoleLogger-1.md)
 
 #### Inherited from
 
-EventEmitter.setMaxListeners
+[Logger](Logger.Logger-1.md).[setMaxListeners](Logger.Logger-1.md#setmaxlisteners)
 
 #### Defined in
 
@@ -1194,9 +1204,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.silly
+[Logger](Logger.Logger-1.md).[silly](Logger.Logger-1.md#silly)
 
 #### Defined in
 
@@ -1222,9 +1232,9 @@ Alias for `silly`
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.trace
+[Logger](Logger.Logger-1.md).[trace](Logger.Logger-1.md#trace)
 
 #### Defined in
 
@@ -1248,9 +1258,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.verbose
+[Logger](Logger.Logger-1.md).[verbose](Logger.Logger-1.md#verbose)
 
 #### Defined in
 
@@ -1274,9 +1284,9 @@ ___
 
 `void`
 
-#### Implementation of
+#### Inherited from
 
-ILogger.warn
+[Logger](Logger.Logger-1.md).[warn](Logger.Logger-1.md#warn)
 
 #### Defined in
 
@@ -1328,7 +1338,7 @@ const { getEventListeners, EventEmitter } = require('events');
 
 #### Inherited from
 
-EventEmitter.getEventListeners
+[Logger](Logger.Logger-1.md).[getEventListeners](Logger.Logger-1.md#geteventlisteners)
 
 #### Defined in
 
@@ -1368,7 +1378,7 @@ console.log(listenerCount(myEmitter, 'event'));
 
 #### Inherited from
 
-EventEmitter.listenerCount
+[Logger](Logger.Logger-1.md).[listenerCount](Logger.Logger-1.md#listenercount)
 
 #### Defined in
 
@@ -1452,7 +1462,7 @@ that iterates `eventName` events emitted by the `emitter`
 
 #### Inherited from
 
-EventEmitter.on
+[Logger](Logger.Logger-1.md).[on](Logger.Logger-1.md#on)
 
 #### Defined in
 
@@ -1560,7 +1570,7 @@ ee.emit('foo'); // Prints: Waiting for the event was canceled!
 
 #### Inherited from
 
-EventEmitter.once
+[Logger](Logger.Logger-1.md).[once](Logger.Logger-1.md#once)
 
 #### Defined in
 
@@ -1582,7 +1592,7 @@ node_modules/@types/node/events.d.ts:157
 
 #### Inherited from
 
-EventEmitter.once
+[Logger](Logger.Logger-1.md).[once](Logger.Logger-1.md#once)
 
 #### Defined in
 

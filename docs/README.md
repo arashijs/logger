@@ -1,3 +1,3 @@
-@arashi/logger - v2.1.0 / [Exports](modules.md)
+@arashi/logger - v3.0.0 / [Exports](modules.md)
 
 # logger

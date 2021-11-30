@@ -1,4 +1,4 @@
-[@arashi/logger - v2.1.0](../README.md) / [Exports](../modules.md) / Logger
+[@arashi/logger - v3.0.0](../README.md) / [Exports](../modules.md) / Logger
 
 # Module: Logger
 
@@ -7,3 +7,7 @@
 ### Classes
 
 - [Logger](../classes/Logger.Logger-1.md)
+
+### Interfaces
+
+- [ILogMetadata](../interfaces/Logger.ILogMetadata.md)
