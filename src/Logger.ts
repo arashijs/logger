@@ -14,132 +14,138 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import * as utils from 'util';
-import * as Winston from 'winston';
+// import * as Winston from 'winston';
 import {
     LogLevel,
     LogEvent,
     ILogger
 } from '@arashi/interfaces';
 import {EventEmitter} from 'events';
-import * as Path from 'path';
+// import * as Path from 'path';
 
-const F_RESET: string = '\x1b[0m';
-const F_DIM: string = '\x1b[2m';
-const F_FG_BLUE: string = '\x1b[34m';
-const F_FG_CYAN: string = '\x1b[36m';
+// const F_RESET: string = '\x1b[0m';
+// const F_DIM: string = '\x1b[2m';
+// const F_FG_BLUE: string = '\x1b[34m';
+// const F_FG_CYAN: string = '\x1b[36m';
 
-const DEFAULT_MAX_FILE_SIZE: number = 52428800; // 50MB
+// const DEFAULT_MAX_FILE_SIZE: number = 52428800; // 50MB
 
-export class Logger extends EventEmitter implements ILogger {
+export interface ILogMetadata {
+    service: string;
+    component: string;
+    meta: Record<any, any>;
+}
+
+export abstract class Logger extends EventEmitter implements ILogger {
     private $filters: Array<RegExp>;
-    private $logger: Winston.Logger;
-    private $logLocation: string;
+    // private $logger: Winston.Logger;
+    // private $logLocation: string;
+    private $logLevel: LogLevel;
     private $serviceName: string;
 
-    public constructor(serviceName: string = 'Generic', logLevel: LogLevel = LogLevel.INFO, logLocation?: string) {
+    public constructor(serviceName: string = 'Generic', logLevel: LogLevel = LogLevel.INFO) {
         super();
-
-        this.$logLocation = logLocation ? Path.resolve(logLocation) : null;
         
         this.$filters = this._getDefaultLogFilters();
         this.$serviceName = serviceName;
+        this.$logLevel = logLevel;
 
-        let format: Winston.Logform.Format = Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
-            // Typescript for some reason doesn't allow using symbols as indexes.
-            const MESSAGE: any = Symbol.for('message');
-            info[MESSAGE] = `${F_DIM}${info.timestamp}${F_RESET} - [${F_FG_BLUE}${info.service}${F_RESET}][${F_FG_CYAN}${info.component}${F_RESET}]: ${info.level}: ${info.message}`
-            return info;
-        })();
+        // let format: Winston.Logform.Format = Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
+        //     // Typescript for some reason doesn't allow using symbols as indexes.
+        //     const MESSAGE: any = Symbol.for('message');
+        //     info[MESSAGE] = `${F_DIM}${info.timestamp}${F_RESET} - [${F_FG_BLUE}${info.service}${F_RESET}][${F_FG_CYAN}${info.component}${F_RESET}]: ${info.level}: ${info.message}`
+        //     return info;
+        // })();
 
-        let consoleTransport: Winston.transports.ConsoleTransportInstance = new Winston.transports.Console({
-            format: Winston.format.combine(
-                Winston.format.colorize(),
-                format,
-                Winston.format.errors({ stack: true })
-            )
-        });
+        // let consoleTransport: Winston.transports.ConsoleTransportInstance = new Winston.transports.Console({
+        //     format: Winston.format.combine(
+        //         Winston.format.colorize(),
+        //         format,
+        //         Winston.format.errors({ stack: true })
+        //     )
+        // });
 
-        consoleTransport.on('logged', (log: Winston.LogEntry) => {
-            this.emit(LogEvent.LOG, log.message);
-        });
+        // consoleTransport.on('logged', (log: Winston.LogEntry) => {
+        //     this.emit(LogEvent.LOG, log.message);
+        // });
 
-        let transports: Array<Winston.transport> = [ consoleTransport ];
+        // let transports: Array<Winston.transport> = [ consoleTransport ];
 
-        if (this.$logLocation) {
-            transports.push(new Winston.transports.File({
-                filename: Path.resolve(this.$logLocation, `${serviceName}.json.log`),
-                level: logLevel,
-                maxsize: this.getMaxFileSize(),
-                format: Winston.format.combine(
-                    Winston.format.json(),
-                    Winston.format.errors({ stack: true }),
-                    Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
-                        const MESSAGE: any = Symbol.for('message');
-                        info[MESSAGE] = utils.inspect({
-                            level: info.level,
-                            message: info.message,
-                            timestamp: info.timestamp,
-                            service: info.service,
-                            component: info.component,
-                            meta: info.meta
-                        }, {
-                            depth: Infinity,
-                            colors: false,
-                            maxArrayLength: Infinity,
-                            showProxy: true,
-                            breakLength: Infinity
-                        });
-                        return info;
-                    })()
-                )
-            }));
-            transports.push(new Winston.transports.File({
-                filename: Path.resolve(this.$logLocation, `${serviceName}.log`),
-                maxsize: this.getMaxFileSize(),
-                level: logLevel,
-                format: Winston.format.combine(
-                    Winston.format.simple(),
-                    Winston.format.errors({ stack: true }),
-                    format
-                )
-            }));
-            transports.push(new Winston.transports.File({
-                filename: Path.resolve(this.$logLocation, `${serviceName}.errors.log`),
-                maxsize: this.getMaxFileSize(),
-                level: LogLevel.WARN,
-                format: Winston.format.combine(
-                    Winston.format.simple(),
-                    Winston.format.errors({ stack: true }),
-                    format
-                )
-            }));
-        }
+        // if (this.$logLocation) {
+        //     transports.push(new Winston.transports.File({
+        //         filename: Path.resolve(this.$logLocation, `${serviceName}.json.log`),
+        //         level: logLevel,
+        //         maxsize: this.getMaxFileSize(),
+        //         format: Winston.format.combine(
+        //             Winston.format.json(),
+        //             Winston.format.errors({ stack: true }),
+        //             Winston.format((info: Winston.Logform.TransformableInfo, opts?: any): Winston.Logform.TransformableInfo => {
+        //                 const MESSAGE: any = Symbol.for('message');
+        //                 info[MESSAGE] = utils.inspect({
+        //                     level: info.level,
+        //                     message: info.message,
+        //                     timestamp: info.timestamp,
+        //                     service: info.service,
+        //                     component: info.component,
+        //                     meta: info.meta
+        //                 }, {
+        //                     depth: Infinity,
+        //                     colors: false,
+        //                     maxArrayLength: Infinity,
+        //                     showProxy: true,
+        //                     breakLength: Infinity
+        //                 });
+        //                 return info;
+        //             })()
+        //         )
+        //     }));
+        //     transports.push(new Winston.transports.File({
+        //         filename: Path.resolve(this.$logLocation, `${serviceName}.log`),
+        //         maxsize: this.getMaxFileSize(),
+        //         level: logLevel,
+        //         format: Winston.format.combine(
+        //             Winston.format.simple(),
+        //             Winston.format.errors({ stack: true }),
+        //             format
+        //         )
+        //     }));
+        //     transports.push(new Winston.transports.File({
+        //         filename: Path.resolve(this.$logLocation, `${serviceName}.errors.log`),
+        //         maxsize: this.getMaxFileSize(),
+        //         level: LogLevel.WARN,
+        //         format: Winston.format.combine(
+        //             Winston.format.simple(),
+        //             Winston.format.errors({ stack: true }),
+        //             format
+        //         )
+        //     }));
+        // }
 
-        this.$logger = Winston.createLogger({
-            level: logLevel,
-            format: Winston.format.combine(
-                Winston.format.timestamp({
-                    format: 'YYYY-MM-DD HH:mm:ss'
-                }),
-                Winston.format.errors({ stack: true })
-            ),
-            defaultMeta: {
-                service: serviceName
-            },
-            transports: transports
-        });
+        // this.$logger = Winston.createLogger({
+        //     level: logLevel,
+        //     format: Winston.format.combine(
+        //         Winston.format.timestamp({
+        //             format: 'YYYY-MM-DD HH:mm:ss'
+        //         }),
+        //         Winston.format.errors({ stack: true })
+        //     ),
+        //     defaultMeta: {
+        //         service: serviceName
+        //     },
+        //     transports: transports
+        // });
     }
 
-    public getMaxFileSize(): number {
-        return DEFAULT_MAX_FILE_SIZE;
-    }
+    // public getMaxFileSize(): number {
+    //     return DEFAULT_MAX_FILE_SIZE;
+    // }
 
     public setLogLevel(level: LogLevel): void {
-        this.$logger.level = level;
+        this.$logLevel = level;
     }
 
     public getLogLevel(): LogLevel {
-        return <LogLevel> this.$logger.level;
+        return this.$logLevel;
     }
 
     public addFilter(reg: RegExp): void {
@@ -206,6 +212,8 @@ export class Logger extends EventEmitter implements ILogger {
         }
     }
 
+    protected abstract _log(logLevel: LogLevel, message: string, metadata: ILogMetadata): void;
+
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public log(level: LogLevel, component: string, message: any, metadata?: Record<any, any>): void {
 
@@ -214,7 +222,16 @@ export class Logger extends EventEmitter implements ILogger {
         }
 
         if (this._shouldFilter(message)) {
-            this.$logger.log(level, this.$parseMessage(message), {
+            let msg: string = this.$parseMessage(message);
+            this._log(level, msg, {
+                service: this.$serviceName,
+                component: component,
+                meta: metadata
+            });
+
+            this.emit(LogEvent.LOG, {
+                level: level,
+                message: msg,
                 service: this.$serviceName,
                 component: component,
                 meta: metadata

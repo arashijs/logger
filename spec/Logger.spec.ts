@@ -1,15 +1,21 @@
 
-import {Logger} from '../src/Logger';
+import {ILogMetadata, Logger} from '../src/Logger';
 import {
     LogLevel,
     LogEvent
 } from '@arashi/interfaces';
 
+class TestLogger extends Logger {
+    protected _log(level: LogLevel, message: string, metadata: ILogMetadata): void {
+        console.log(message, metadata);
+    }
+}
+
 describe('Logger', () => {
     let logger: Logger = null;
 
     beforeEach(() => {
-        logger = new Logger('test');
+        logger = new TestLogger('test');
     });
 
     it('emits LogEvent.LOG events', (done) => {
@@ -19,7 +25,13 @@ describe('Logger', () => {
         logger.info('test', 'test message');
 
         setTimeout(() => {
-            expect(spy).toBeCalledWith('test message');
+            expect(spy).toBeCalledWith({
+                component: 'test',
+                level: 'info',
+                message: 'test message',
+                meta: {},
+                service: 'test'
+            });
             done();
         }, 1);
     });
@@ -71,7 +83,7 @@ describe('Logger', () => {
     });
 
     it('Can log silly messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger).$logger, 'log');
+        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.SILLY);
         logger.silly('component', 'This is a trace message');
         expect(spy).toHaveBeenCalledWith(LogLevel.SILLY, 'This is a trace message', {
@@ -82,7 +94,7 @@ describe('Logger', () => {
     });
 
     it('Can log debug messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger).$logger, 'log');
+        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.DEBUG);
         logger.debug('component', 'This is a debug message');
         expect(spy).toHaveBeenCalledWith(LogLevel.DEBUG, 'This is a debug message', {
@@ -93,7 +105,7 @@ describe('Logger', () => {
     });
 
     it('Can log verbose messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger).$logger, 'log');
+        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.VERBOSE);
         logger.verbose('component', 'This is a verbose message');
         expect(spy).toHaveBeenCalledWith(LogLevel.VERBOSE, 'This is a verbose message', {
@@ -104,7 +116,7 @@ describe('Logger', () => {
     });
 
     it('Can log info messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger).$logger, 'log');
+        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.INFO);
         logger.info('component', 'This is a info message');
         expect(spy).toHaveBeenCalledWith(LogLevel.INFO, 'This is a info message', {
@@ -115,7 +127,7 @@ describe('Logger', () => {
     });
 
     it('Can log warning messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger).$logger, 'log');
+        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.WARN);
         logger.warn('component', 'This is a warning message');
         expect(spy).toHaveBeenCalledWith(LogLevel.WARN, 'This is a warning message', {
@@ -126,7 +138,7 @@ describe('Logger', () => {
     });
 
     it('Can log error messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger).$logger, 'log');
+        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.ERROR);
         logger.error('component', 'This is a error message');
         expect(spy).toHaveBeenCalledWith(LogLevel.ERROR, 'This is a error message', {
@@ -164,7 +176,7 @@ describe('Logger', () => {
         let alternativeMessageSpy: jasmine.Spy = null;
 
         beforeEach(() => {
-            spyOn((<any>logger).$logger, 'log');
+            spyOn((<any>logger), '_log');
             methodMessageSpy = spyOn<any>(logger, '$getDeprecatedMethodMessage');
             alternativeMessageSpy = spyOn<any>(logger, '$getDeprecatedAlternativeMessage');
             methodMessageSpy.and.callThrough();

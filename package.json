@@ -9,21 +9,22 @@
   },
   "dependencies": {
     "events": "3.3.0",
+    "util": "0.12.4",
     "winston": "3.3.3"
   },
   "peerDependencies": {
     "@arashi/interfaces": ">=1.1.0 <2.0.0"
   },
   "devDependencies": {
-    "@arashi/interfaces": "file:../interfaces/arashi-interfaces-1.1.0-dev.tgz",
+    "@arashi/interfaces": "1.1.0",
     "@totalpave/eslint-plugin": "6.0.1",
     "@types/jest": "27.0.3",
-    "@types/node": "16.11.10",
-    "@typescript-eslint/eslint-plugin": "5.4.0",
-    "@typescript-eslint/parser": "5.4.0",
+    "@types/node": "16.11.11",
+    "@typescript-eslint/eslint-plugin": "5.5.0",
+    "@typescript-eslint/parser": "5.5.0",
     "auto-changelog": "2.3.0",
     "eslint": "8.3.0",
-    "jest": "27.3.1",
+    "jest": "27.4.2",
     "nyc": "15.1.0",
     "ts-jest": "27.0.7",
     "ts-node": "10.4.0",
