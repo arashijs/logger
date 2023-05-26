@@ -1,21 +1,15 @@
 
-import {ILogMetadata, Logger} from '../src/Logger';
+import {Logger} from '../src/Logger';
 import {
     LogLevel,
     LogEvent
 } from '@arashi/interfaces';
 
-class TestLogger extends Logger {
-    protected _log(level: LogLevel, message: string, metadata: ILogMetadata): void {
-        console.log(message, metadata);
-    }
-}
-
 describe('Logger', () => {
     let logger: Logger = null;
 
     beforeEach(() => {
-        logger = new TestLogger('test');
+        logger = new Logger('test');
     });
 
     it('emits LogEvent.LOG events', (done) => {
