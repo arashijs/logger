@@ -45,7 +45,7 @@ export class CloudWatchStream extends Writable {
                 logStreamName: this.$streamConfig.stream,
                 logEvents: [
                     {
-                        timestamp: new Date().getTime(),
+                        timestamp: chunk.timestamp,
                         message: json
                     }
                 ]

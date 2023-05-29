@@ -22,12 +22,15 @@ import {
 } from '@arashi/interfaces';
 import {ILogMetadata} from './ILogMetadata';
 import { Readable } from 'stream';
+import { ILogObject } from './ILogObject';
 
 
 export class BaseLogger extends Readable implements ILogger {
     private $filters: Array<RegExp>;
     private $logLevel: LogLevel;
     private $serviceName: string;
+    private $shouldWaitForRead: boolean;
+    private $buffer: Array<ILogObject> = [];
 
     public constructor(serviceName: string, logLevel: LogLevel) {
         super({
@@ -38,6 +41,8 @@ export class BaseLogger extends Readable implements ILogger {
         this.$filters = this._getDefaultLogFilters();
         this.$serviceName = serviceName;
         this.$logLevel = logLevel;
+        this.$shouldWaitForRead = true;
+        this.$buffer = [];
     }
 
     public setLogLevel(level: LogLevel): void {
@@ -112,14 +117,31 @@ export class BaseLogger extends Readable implements ILogger {
 
     public override _read(size: number): void {
        /// do nothing, we will push data as they become available
+        let shouldContinue: boolean = true;
+        while (this.$buffer.length > 0) {
+            let lo: ILogObject = this.$buffer.shift();
+            shouldContinue = this.push(lo);
+            if (!shouldContinue) {
+                break;
+            }
+        }
+
+        this.$shouldWaitForRead = !shouldContinue;
     }
 
     protected _log(logLevel: LogLevel, message: string, metadata: ILogMetadata): void {
-        this.push({
+        let lo: ILogObject = {
             level: logLevel,
             message: message,
-            metadata: metadata
-        });
+            metadata: metadata,
+            timestamp: new Date().getTime()
+        };
+        if (this.$shouldWaitForRead) {
+            this.$buffer.push(lo)
+        }
+        else {
+            this.push(lo);
+        }
     }
 
     public log(level: LogLevel, component: string, message: any, metadata?: Record<any, any>): void {

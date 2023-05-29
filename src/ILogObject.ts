@@ -5,4 +5,5 @@ export interface ILogObject {
     level: LogLevel;
     metadata: ILogMetadata;
     message: string;
+    timestamp: number;
 }
