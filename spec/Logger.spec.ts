@@ -1,4 +1,5 @@
 
+import { ILogObject } from '../src/ILogObject';
 import {Logger} from '../src/Logger';
 import {
     LogLevel,
@@ -23,8 +24,9 @@ describe('Logger', () => {
                 component: 'test',
                 level: 'info',
                 message: 'test message',
-                meta: {},
-                service: 'test'
+                metadata: {},
+                service: 'test',
+                timestamp: expect.anything()
             });
             done();
         }, 1);
@@ -80,66 +82,90 @@ describe('Logger', () => {
         let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.SILLY);
         logger.silly('component', 'This is a trace message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.SILLY, 'This is a trace message', {
+        let expectation: ILogObject = {
+            level: LogLevel.SILLY,
             service: 'test',
             component: 'component',
-            meta: {}
-        });
+            metadata: {},
+            timestamp: expect.anything(),
+            message: 'This is a trace message'
+        };
+        expect(spy).toHaveBeenCalledWith(expectation);
     });
 
     it('Can log debug messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.DEBUG);
         logger.debug('component', 'This is a debug message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.DEBUG, 'This is a debug message', {
+        let expectation: ILogObject = {
+            level: LogLevel.DEBUG,
             service: 'test',
             component: 'component',
-            meta: {}
-        });
+            metadata: {},
+            timestamp: expect.anything(),
+            message: 'This is a debug message'
+        };
+        expect(spy).toHaveBeenCalledWith(expectation);
     });
 
     it('Can log verbose messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.VERBOSE);
         logger.verbose('component', 'This is a verbose message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.VERBOSE, 'This is a verbose message', {
+        let expectation: ILogObject = {
+            level: LogLevel.VERBOSE,
             service: 'test',
             component: 'component',
-            meta: {}
-        });
+            metadata: {},
+            timestamp: expect.anything(),
+            message: 'This is a verbose message'
+        };
+        expect(spy).toHaveBeenCalledWith(expectation);
     });
 
     it('Can log info messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.INFO);
         logger.info('component', 'This is a info message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.INFO, 'This is a info message', {
+        let expectation: ILogObject = {
+            level: LogLevel.INFO,
             service: 'test',
             component: 'component',
-            meta: {}
-        });
+            metadata: {},
+            timestamp: expect.anything(),
+            message: 'This is a info message'
+        };
+        expect(spy).toHaveBeenCalledWith(expectation);
     });
 
     it('Can log warning messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.WARN);
         logger.warn('component', 'This is a warning message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.WARN, 'This is a warning message', {
+        let expectation: ILogObject = {
+            level: LogLevel.WARN,
             service: 'test',
             component: 'component',
-            meta: {}
-        });
+            metadata: {},
+            timestamp: expect.anything(),
+            message: 'This is a warning message'
+        };
+        expect(spy).toHaveBeenCalledWith(expectation);
     });
 
     it('Can log error messages', () => {
         let spy: jasmine.Spy = spyOn((<any>logger), '_log');
         logger.setLogLevel(LogLevel.ERROR);
         logger.error('component', 'This is a error message');
-        expect(spy).toHaveBeenCalledWith(LogLevel.ERROR, 'This is a error message', {
+        let expectation: ILogObject = {
+            level: LogLevel.ERROR,
             service: 'test',
             component: 'component',
-            meta: {}
-        });
+            metadata: {},
+            timestamp: expect.anything(),
+            message: 'This is a error message'
+        };
+        expect(spy).toHaveBeenCalledWith(expectation);
     });
 
     describe('Deprecation', () => {

@@ -1,9 +1,10 @@
 import { LogLevel } from '@arashi/interfaces';
-import { ILogMetadata } from './ILogMetadata';
 
 export interface ILogObject {
     level: LogLevel;
-    metadata: ILogMetadata;
+    metadata: Record<any, any>;
+    service: string;
+    component: string;
     message: string;
     timestamp: number;
 }

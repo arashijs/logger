@@ -20,7 +20,6 @@ import {
     LogEvent,
     ILogger
 } from '@arashi/interfaces';
-import {ILogMetadata} from './ILogMetadata';
 import { Readable } from 'stream';
 import { ILogObject } from './ILogObject';
 
@@ -129,13 +128,7 @@ export class BaseLogger extends Readable implements ILogger {
         this.$shouldWaitForRead = !shouldContinue;
     }
 
-    protected _log(logLevel: LogLevel, message: string, metadata: ILogMetadata): void {
-        let lo: ILogObject = {
-            level: logLevel,
-            message: message,
-            metadata: metadata,
-            timestamp: new Date().getTime()
-        };
+    protected _log(lo: ILogObject): void {
         if (this.$shouldWaitForRead) {
             this.$buffer.push(lo)
         }
@@ -151,19 +144,19 @@ export class BaseLogger extends Readable implements ILogger {
 
         if (this._shouldFilter(message)) {
             let msg: string = this.$parseMessage(message);
-            this._log(level, msg, {
-                service: this.$serviceName,
-                component: component,
-                meta: metadata
-            });
 
-            this.emit(LogEvent.LOG, {
-                level: level,
-                message: msg,
+            let lo: ILogObject = {
                 service: this.$serviceName,
                 component: component,
-                meta: metadata
-            });
+                message: msg,
+                level: level,
+                metadata: metadata,
+                timestamp: new Date().getTime()
+            }
+
+            this._log(lo);
+
+            this.emit(LogEvent.LOG, lo);
         }
     }
 
