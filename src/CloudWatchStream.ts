@@ -20,7 +20,7 @@ export class CloudWatchStream extends Writable {
     public constructor(awsConfig: CloudWatchLogsClientConfig, streamConfig: ICWStreamConfig, opts?: WritableOptions) {
         super({
             ...opts,
-            highWaterMark: 1,
+            highWaterMark: 256,
             objectMode: true
         });
 

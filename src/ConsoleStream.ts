@@ -8,7 +8,7 @@ export class ConsoleStream extends Writable {
     public constructor(opts?: WritableOptions) {
         super({
             ...opts,
-            highWaterMark: 1,
+            highWaterMark: 256,
             objectMode: true
         });
     }

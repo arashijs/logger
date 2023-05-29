@@ -35,7 +35,7 @@ export class BaseLogger extends Readable implements ILogger {
     public constructor(serviceName: string, logLevel: LogLevel) {
         super({
             objectMode: true,
-            highWaterMark: 1
+            highWaterMark: 256
         });
 
         this.$filters = this._getDefaultLogFilters();
