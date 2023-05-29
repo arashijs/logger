@@ -2,6 +2,7 @@
 import {BaseLogger} from './BaseLogger';
 import {ConsoleStream} from './ConsoleStream';
 import {LogLevel} from '@arashi/interfaces';
+import { ILogFormatter } from './ILogFormatter';
 
 export class Logger extends BaseLogger {
     private $cstream: ConsoleStream;
@@ -10,5 +11,9 @@ export class Logger extends BaseLogger {
         super(serviceName, logLevel);
         this.$cstream = new ConsoleStream();
         this.pipe(this.$cstream);
+    }
+
+    public setConsoleFormatter(formatter: ILogFormatter): void {
+        this.$cstream.setFormatter(formatter);
     }
 }
