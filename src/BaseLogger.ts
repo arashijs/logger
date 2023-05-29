@@ -160,6 +160,11 @@ export class BaseLogger extends Readable implements ILogger {
         }
     }
 
+    public logObject(lo: ILogObject): void {
+        this._log(lo);
+        this.emit(LogEvent.LOG, lo);
+    }
+
     /**
      * Alias for `silly`
      * @param message 

@@ -32,6 +32,23 @@ describe('Logger', () => {
         }, 1);
     });
 
+    it('logObject should log the given object', () => {
+        let lo: ILogObject = {
+            service: 'test',
+            component: 'comp',
+            message: 'hi',
+            level: LogLevel.INFO,
+            metadata: {
+                test: true
+            },
+            timestamp: new Date().getTime()
+        };
+
+        let spy: jest.SpyInstance = jest.spyOn(<any>logger, '_log');
+        logger.logObject(lo);
+        expect(spy).toHaveBeenCalledWith(lo);
+    });
+
     it('Sets default Log Level', () => {
         expect(logger.getLogLevel()).toBe(LogLevel.INFO);
     });
