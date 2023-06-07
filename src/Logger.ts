@@ -16,4 +16,8 @@ export class Logger extends BaseLogger {
     public setConsoleFormatter(formatter: ILogFormatter): void {
         this.$cstream.setFormatter(formatter);
     }
+
+    public getConsoleStream(): ConsoleStream {
+        return this.$cstream;
+    }
 }

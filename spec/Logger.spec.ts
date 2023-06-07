@@ -1,4 +1,5 @@
 
+import { ConsoleStream } from '../src/ConsoleStream';
 import { ILogObject } from '../src/ILogObject';
 import {Logger} from '../src/Logger';
 import {
@@ -11,6 +12,14 @@ describe('Logger', () => {
 
     beforeEach(() => {
         logger = new Logger('test');
+    });
+
+    afterEach((done) => {
+        let stream: ConsoleStream = logger.getConsoleStream();
+        stream.once('finish', () => {
+            done();
+        });
+        logger.destroy();
     });
 
     it('emits LogEvent.LOG events', (done) => {
