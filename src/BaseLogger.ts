@@ -23,6 +23,49 @@ import {
 import { Readable } from 'stream';
 import { ILogObject } from './ILogObject';
 
+const ACCEPTABLE_LEVELS: Record<LogLevel, Array<LogLevel>> = {
+    [LogLevel.ERROR]: [ LogLevel.ERROR ],
+    [LogLevel.WARN]: [
+        LogLevel.ERROR,
+        LogLevel.WARN
+    ],
+    [LogLevel.INFO]: [
+        LogLevel.ERROR,
+        LogLevel.WARN,
+        LogLevel.INFO
+    ],
+    [LogLevel.HTTP]: [
+        LogLevel.ERROR,
+        LogLevel.WARN,
+        LogLevel.INFO,
+        LogLevel.HTTP
+    ],
+    [LogLevel.VERBOSE]: [
+        LogLevel.ERROR,
+        LogLevel.WARN,
+        LogLevel.INFO,
+        LogLevel.HTTP,
+        LogLevel.VERBOSE
+    ],
+    [LogLevel.DEBUG]: [
+        LogLevel.ERROR,
+        LogLevel.WARN,
+        LogLevel.INFO,
+        LogLevel.HTTP,
+        LogLevel.VERBOSE,
+        LogLevel.DEBUG
+    ],
+    [LogLevel.SILLY]: [
+        LogLevel.ERROR,
+        LogLevel.WARN,
+        LogLevel.INFO,
+        LogLevel.HTTP,
+        LogLevel.VERBOSE,
+        LogLevel.DEBUG,
+        LogLevel.SILLY
+    ]
+};
+
 
 export class BaseLogger extends Readable implements ILogger {
     private $filters: Array<RegExp>;
@@ -128,13 +171,26 @@ export class BaseLogger extends Readable implements ILogger {
         this.$shouldWaitForRead = !shouldContinue;
     }
 
-    protected _log(lo: ILogObject): void {
-        if (this.$shouldWaitForRead) {
-            this.$buffer.push(lo)
+    protected _log(lo: ILogObject): boolean {
+        let shouldEmit: boolean = false;
+
+        if (this._shouldLog(lo)) {
+            if (this.$shouldWaitForRead) {
+                this.$buffer.push(lo)
+                shouldEmit = true;
+            }
+            else {
+                this.push(lo);
+                shouldEmit = true;
+            }
         }
-        else {
-            this.push(lo);
-        }
+
+        return shouldEmit;
+    }
+
+    protected _shouldLog(lo: ILogObject): boolean {
+        let allowedLevels: Array<LogLevel> = ACCEPTABLE_LEVELS[this.$logLevel];
+        return allowedLevels.indexOf(lo.level) > -1;
     }
 
     public log(level: LogLevel, component: string, message: any, metadata?: Record<any, any>): void {
