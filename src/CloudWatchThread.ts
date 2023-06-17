@@ -57,4 +57,4 @@ let channel: MessageChannel = new MessageChannel();
     }
 });
 
-
+workerData.port.postMessage(channel.port2, [ channel.port2 ]);
