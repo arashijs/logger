@@ -63,14 +63,14 @@ describe('Logger', () => {
     });
 
     it('has default filter', () => {
-        let filters: Array<RegExp> = logger.getFilters();
+        let filters: RegExp[] = logger.getFilters();
         expect(filters[0].toString()).toBe('/TokenExpiredError/g');
     });
 
     it('Can add filter', () => {
         let addFilter = /test/;
         logger.addFilter(addFilter);
-        let filters: Array<RegExp> = logger.getFilters();
+        let filters: RegExp[] = logger.getFilters();
         let filter: RegExp = filters[filters.length - 1];
         expect(filter).toBe(addFilter);
     });
@@ -78,7 +78,7 @@ describe('Logger', () => {
     it('Can remove filter', () => {
         let addFilter = /test/;
         logger.addFilter(addFilter);
-        let filters: Array<RegExp> = logger.getFilters();
+        let filters: RegExp[] = logger.getFilters();
         expect(filters.length).toBe(2);
         logger.removeFilter(addFilter);
         expect(logger.getFilters().length).toBe(1);

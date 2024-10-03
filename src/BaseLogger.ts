@@ -23,7 +23,7 @@ import {
 import { Readable } from 'stream';
 import { ILogObject } from './ILogObject';
 
-const ACCEPTABLE_LEVELS: Record<LogLevel, Array<LogLevel>> = {
+const ACCEPTABLE_LEVELS: Record<LogLevel, LogLevel[]> = {
     [LogLevel.ERROR]: [ LogLevel.ERROR ],
     [LogLevel.WARN]: [
         LogLevel.ERROR,
@@ -68,11 +68,11 @@ const ACCEPTABLE_LEVELS: Record<LogLevel, Array<LogLevel>> = {
 
 
 export class BaseLogger extends Readable implements ILogger {
-    private $filters: Array<RegExp>;
+    private $filters: RegExp[];
     private $logLevel: LogLevel;
     private $serviceName: string;
     private $shouldWaitForRead: boolean;
-    private $buffer: Array<ILogObject> = [];
+    private $buffer: ILogObject[] = [];
 
     public constructor(serviceName: string, logLevel: LogLevel) {
         super({
@@ -106,7 +106,7 @@ export class BaseLogger extends Readable implements ILogger {
         }
     }
 
-    public setFilters(filters: Array<RegExp>): void {
+    public setFilters(filters: RegExp[]): void {
         if (filters) {
             this.$filters  = filters.slice();
         }
@@ -115,11 +115,11 @@ export class BaseLogger extends Readable implements ILogger {
         }
     }
 
-    public getFilters(): Array<RegExp> {
+    public getFilters(): RegExp[] {
         return this.$filters.slice();
     }
 
-    protected _getDefaultLogFilters(): Array<RegExp> {
+    protected _getDefaultLogFilters(): RegExp[] {
         return [ /TokenExpiredError/g ];
     }
 
@@ -189,7 +189,7 @@ export class BaseLogger extends Readable implements ILogger {
     }
 
     protected _shouldLog(lo: ILogObject): boolean {
-        let allowedLevels: Array<LogLevel> = ACCEPTABLE_LEVELS[this.$logLevel];
+        let allowedLevels: LogLevel[] = ACCEPTABLE_LEVELS[this.$logLevel];
         return allowedLevels.indexOf(lo.level) > -1;
     }
 
