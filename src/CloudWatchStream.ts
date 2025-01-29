@@ -19,7 +19,7 @@ export class CloudWatchStream extends Writable {
     private $threadChannel: MessageChannel;
     private $threadPort: MessagePort;
 
-    public static async  create(awsConfig: CloudWatchLogsClientConfig, streamConfig: ICWStreamConfig, opts?: WritableOptions): Promise<CloudWatchStream> {
+    public static async create(awsConfig: CloudWatchLogsClientConfig, streamConfig: ICWStreamConfig, opts?: WritableOptions): Promise<CloudWatchStream> {
         let stream: CloudWatchStream = new CloudWatchStream(streamConfig, opts);
         await stream.$initThread(awsConfig);
         return stream;
