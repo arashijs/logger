@@ -5,7 +5,7 @@ import {ILogObject} from './ILogObject';
 import {
     CloudWatchLogsClientConfig
 } from '@aws-sdk/client-cloudwatch-logs';
-import EventEmitter = require('events');
+import { EventEmitter } from 'events';
 import * as Path from 'path';
 
 export interface ICWStreamConfig {
@@ -49,12 +49,12 @@ export class CloudWatchStream extends Writable {
                 // This was tested and works, and is recommended by NodeJS docs,
                 // in fact if you don't transfer the port, using a port in workerData will produce
                 // an error
-                transferList: [ <any> this.$threadChannel.port2 ]
+                transferList: [ this.$threadChannel.port2 as any ]
             });
 
             // We must wait for the thread to initiate and give us it's message port
             // NodeJS version of MessagePort is indeed an EventEmitter...
-            (<EventEmitter><unknown> this.$threadChannel.port1).once('message', (msg: unknown) => {
+            (this.$threadChannel.port1 as unknown as EventEmitter).once('message', (msg: unknown) => {
                 if (!(msg instanceof MessagePort)) {
                     reject(new Error('Expected MessagePort'));
                     return;

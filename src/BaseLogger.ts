@@ -225,37 +225,30 @@ export class BaseLogger extends Readable implements ILogger {
      * Alias for `silly`
      * @param message 
      */
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public trace(component: string, message: any, metadata?: Record<any, any>): void {
         this.silly(component, message, metadata);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public silly(component: string, message: any, metadata?: Record<any, any>): void {
         this.log(LogLevel.SILLY, component, message, metadata);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public debug(component: string, message: any, metadata?: Record<any, any>): void {
         this.log(LogLevel.DEBUG, component, message, metadata);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public verbose(component: string, message: any, metadata?: Record<any, any>): void {
         this.log(LogLevel.VERBOSE, component, message, metadata);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public info(component: string, message: any, metadata?: Record<any, any>): void {
         this.log(LogLevel.INFO, component, message, metadata);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public warn(component: string, message: any, metadata?: Record<any, any>): void {
         this.log(LogLevel.WARN, component, message, metadata);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public error(component: string, message: any, metadata?: Record<any, any>): void {
         this.log(LogLevel.ERROR, component, message, metadata);
     }

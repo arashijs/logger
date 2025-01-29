@@ -28,6 +28,7 @@ export class ConsoleStream extends Writable {
 
     public override _write(chunk: ILogObject, encoding: BufferEncoding, callback: (error?: Error) => void): void {
         let msg: string = this.$formatMessage(chunk);
+        // eslint-disable-next-line no-console
         console.log(msg);
         callback();
     }

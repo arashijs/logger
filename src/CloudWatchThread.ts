@@ -16,7 +16,7 @@ let client: CloudWatchLogsClient = new CloudWatchLogsClient(workerData.awsConfig
 let channel: MessageChannel = new MessageChannel();
 
 // NodeJS version of MessagePort is indeed an EventEmitter...
-(<EventEmitter><unknown>channel.port1).on('message', (chunk: ILogObject) => {
+(channel.port1 as unknown as EventEmitter).on('message', (chunk: ILogObject) => {
     let json: string;
     try {
         json = JSON.stringify(chunk);

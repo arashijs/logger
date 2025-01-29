@@ -23,13 +23,13 @@ describe('Logger', () => {
     });
 
     it('emits LogEvent.LOG events', (done) => {
-        let spy: jasmine.Spy = jasmine.createSpy('log event');
+        let spy: jest.Mock = jest.fn();
         logger.on(LogEvent.LOG, spy);
 
         logger.info('test', 'test message');
 
         setTimeout(() => {
-            expect(spy).toBeCalledWith({
+            expect(spy).toHaveBeenCalledWith({
                 component: 'test',
                 level: 'info',
                 message: 'test message',
@@ -53,7 +53,7 @@ describe('Logger', () => {
             timestamp: new Date().getTime()
         };
 
-        let spy: jest.SpyInstance = jest.spyOn(<any>logger, '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.logObject(lo);
         expect(spy).toHaveBeenCalledWith(lo);
     });
@@ -105,7 +105,7 @@ describe('Logger', () => {
     });
 
     it('Can log silly messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.setLogLevel(LogLevel.SILLY);
         logger.silly('component', 'This is a trace message');
         let expectation: ILogObject = {
@@ -120,7 +120,7 @@ describe('Logger', () => {
     });
 
     it('Can log debug messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.setLogLevel(LogLevel.DEBUG);
         logger.debug('component', 'This is a debug message');
         let expectation: ILogObject = {
@@ -135,7 +135,7 @@ describe('Logger', () => {
     });
 
     it('Can log verbose messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.setLogLevel(LogLevel.VERBOSE);
         logger.verbose('component', 'This is a verbose message');
         let expectation: ILogObject = {
@@ -150,7 +150,7 @@ describe('Logger', () => {
     });
 
     it('Can log info messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.setLogLevel(LogLevel.INFO);
         logger.info('component', 'This is a info message');
         let expectation: ILogObject = {
@@ -165,7 +165,7 @@ describe('Logger', () => {
     });
 
     it('Can log warning messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.setLogLevel(LogLevel.WARN);
         logger.warn('component', 'This is a warning message');
         let expectation: ILogObject = {
@@ -180,7 +180,7 @@ describe('Logger', () => {
     });
 
     it('Can log error messages', () => {
-        let spy: jasmine.Spy = spyOn((<any>logger), '_log');
+        let spy: jest.SpyInstance = jest.spyOn((logger as any), '_log');
         logger.setLogLevel(LogLevel.ERROR);
         logger.error('component', 'This is a error message');
         let expectation: ILogObject = {
@@ -218,45 +218,43 @@ describe('Logger', () => {
         }
 
         let deprecation: Deprecation = new Deprecation();
-        let methodMessageSpy: jasmine.Spy = null;
-        let alternativeMessageSpy: jasmine.Spy = null;
+        let methodMessageSpy: jest.SpyInstance = null;
+        let alternativeMessageSpy: jest.SpyInstance = null;
 
         beforeEach(() => {
-            spyOn((<any>logger), '_log');
-            methodMessageSpy = spyOn<any>(logger, '$getDeprecatedMethodMessage');
-            alternativeMessageSpy = spyOn<any>(logger, '$getDeprecatedAlternativeMessage');
-            methodMessageSpy.and.callThrough();
-            alternativeMessageSpy.and.callThrough();
+            jest.spyOn((logger as any), '_log');
+            methodMessageSpy = jest.spyOn(logger as any, '$getDeprecatedMethodMessage');
+            alternativeMessageSpy = jest.spyOn(logger as any, '$getDeprecatedAlternativeMessage');
         });
 
         it('deprecation with no alternative', () => {
             deprecation.deprecationWithNoAlternative();
             expect(methodMessageSpy).toHaveBeenCalled();
-            expect(methodMessageSpy.calls.mostRecent().returnValue).toBe('Method Deprecation.deprecationWithNoAlternative is deprecated.');
+            expect(methodMessageSpy.mock.results[methodMessageSpy.mock.results.length - 1].value).toBe('Method Deprecation.deprecationWithNoAlternative is deprecated.');
             expect(alternativeMessageSpy).not.toHaveBeenCalled();
         });
 
         it('deprecation with alternative', () => {
             deprecation.deprecationWithAlternative();
             expect(methodMessageSpy).toHaveBeenCalled();
-            expect(methodMessageSpy.calls.mostRecent().returnValue).toBe('Method Deprecation.deprecationWithAlternative is deprecated.');
+            expect(methodMessageSpy.mock.results[methodMessageSpy.mock.results.length - 1].value).toBe('Method Deprecation.deprecationWithAlternative is deprecated.');
             expect(alternativeMessageSpy).toHaveBeenCalledWith('properMethod');
-            expect(alternativeMessageSpy.calls.mostRecent().returnValue).toBe('Use properMethod instead.');
+            expect(alternativeMessageSpy.mock.results[alternativeMessageSpy.mock.results.length - 1].value).toBe('Use properMethod instead.');
         });
 
         it('deprecation class with no alternative', () => {
             new DeprecatedClass();
             expect(methodMessageSpy).toHaveBeenCalled();
-            expect(methodMessageSpy.calls.mostRecent().returnValue).toBe('Class DeprecatedClass is deprecated.');
+            expect(methodMessageSpy.mock.results[methodMessageSpy.mock.results.length - 1].value).toBe('Class DeprecatedClass is deprecated.');
             expect(alternativeMessageSpy).not.toHaveBeenCalled();
         });
 
         it('deprecation class with alternative', () => {
             new DeprecatedClassWithAlternative();
             expect(methodMessageSpy).toHaveBeenCalled();
-            expect(methodMessageSpy.calls.mostRecent().returnValue).toBe('Class DeprecatedClassWithAlternative is deprecated.');
+            expect(methodMessageSpy.mock.results[methodMessageSpy.mock.results.length - 1].value).toBe('Class DeprecatedClassWithAlternative is deprecated.');
             expect(alternativeMessageSpy).toHaveBeenCalledWith('NonDeprecatedClass');
-            expect(alternativeMessageSpy.calls.mostRecent().returnValue).toBe('Use NonDeprecatedClass instead.');
+            expect(alternativeMessageSpy.mock.results[alternativeMessageSpy.mock.results.length - 1].value).toBe('Use NonDeprecatedClass instead.');
         });
     });
 });
