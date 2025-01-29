@@ -4,7 +4,7 @@ import {ILogObject} from './ILogObject';
 import * as Path from 'path';
 import * as Filesystem from 'fs';
 import { ILogFormatter } from './ILogFormatter';
-import { DefaultConsoleFormat } from './DefaultConsoleFormat';
+import { DefaultFileFormat } from './DefaultFileFormat';
 
 /**
  * @since 4.1.0
@@ -25,7 +25,7 @@ export class LogFileStream extends Writable {
     public static async create(config: ILogFileStreamConfig, streamOpts?: WritableOptions): Promise<LogFileStream> {
         return new LogFileStream(
             Filesystem.createWriteStream(Path.resolve(config.path)),
-            config.formatter || new DefaultConsoleFormat(),
+            config.formatter || new DefaultFileFormat(),
             streamOpts || {}
         );
     }
