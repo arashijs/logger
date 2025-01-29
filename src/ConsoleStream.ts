@@ -32,4 +32,8 @@ export class ConsoleStream extends Writable {
         console.log(msg);
         callback();
     }
+
+    public override _destroy(error: Error | null, callback: (error?: Error | null) => void): void {
+        callback(error);
+    }
 }

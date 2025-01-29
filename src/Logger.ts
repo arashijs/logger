@@ -20,4 +20,9 @@ export class Logger extends BaseLogger {
     public getConsoleStream(): ConsoleStream {
         return this.$cstream;
     }
+
+    protected override _onDestroy(): void {
+        this.unpipe(this.$cstream);
+        this.$cstream.end();
+    }
 }

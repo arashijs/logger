@@ -70,4 +70,9 @@ export class CloudWatchStream extends Writable {
         this.$threadPort.postMessage(chunk);
         callback();
     }
+
+    public override _destroy(error: Error | null, callback: (error?: Error | null) => void): void {
+        this.$threadPort.close();
+        callback(error);
+    }
 }

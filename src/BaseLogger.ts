@@ -316,7 +316,21 @@ export class BaseLogger extends Readable implements ILogger {
         return `Use ${alternative} at parameter ${argumentLocation} instead.`;
     }
 
-    public _destroy(): void {
+    protected _onDestroy(): void {}
+
+    public override _destroy(error: Error | null, callback: (error?: Error) => void): void {
+
+        // Drain the buffer
+        while (this.$buffer.length > 0) {
+            let lo: ILogObject = this.$buffer.shift();
+            this.push(lo);
+        }
+
+        // Now signal end of stream
         this.push(null);
+
+        this._onDestroy();
+
+        callback(error);
     }
 }

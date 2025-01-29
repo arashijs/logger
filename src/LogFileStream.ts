@@ -53,4 +53,10 @@ export class LogFileStream extends Writable {
     public override _write(chunk: ILogObject, encoding: BufferEncoding, callback: (error?: Error | null) => void): void {
         this.$stream.write(this.$formatLogObject(chunk), callback);
     }
+
+    public override _destroy(error: Error | null, callback: (error?: Error | null) => void): void {
+        this.$stream.close((e: Error) => {
+            callback(error || e);
+        });
+    }
 }
