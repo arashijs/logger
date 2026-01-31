@@ -1,6 +1,6 @@
 {
   "name": "@arashi/logger",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "description": "Logger",
   "main": "./lib/api.js",
   "publishConfig": {
