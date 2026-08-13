@@ -82,7 +82,7 @@ export class BaseLogger extends Readable implements ILogger {
 
         this.$filters = this._getDefaultLogFilters();
         this.$serviceName = serviceName;
-        this.$logLevel = logLevel;
+        this.$logLevel = logLevel || LogLevel.INFO;
         this.$shouldWaitForRead = true;
         this.$buffer = [];
     }
