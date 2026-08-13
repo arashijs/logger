@@ -8,7 +8,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@aws-sdk/client-cloudwatch-logs": "3.1001.0",
+    "@aws-sdk/client-cloudwatch-logs": "3.1109.0",
     "events": "3.3.0",
     "luxon": "3.7.2",
     "util": "0.12.5"
@@ -18,17 +18,17 @@
   },
   "devDependencies": {
     "@arashi/interfaces": "1.2.1",
-    "@jest/types": "30.2.0",
-    "@totalpave/eslint-plugin": "7.0.17",
+    "@jest/types": "30.4.1",
+    "@totalpave/eslint-plugin": "7.1.2",
     "@types/jest": "30.0.0",
-    "@types/luxon": "3.7.1",
-    "@types/node": "^24.11.0",
-    "auto-changelog": "2.5.0",
-    "jest": "30.2.0",
-    "ts-jest": "29.4.6",
+    "@types/luxon": "3.7.4",
+    "@types/node": "26.2.0",
+    "auto-changelog": "2.6.0",
+    "jest": "30.4.2",
+    "ts-jest": "29.4.12",
     "ts-node": "10.9.2",
-    "typedoc": "0.28.17",
-    "typedoc-plugin-markdown": "4.10.0",
+    "typedoc": "0.28.20",
+    "typedoc-plugin-markdown": "4.12.0",
     "typescript": "5.9.3"
   },
   "scripts": {
